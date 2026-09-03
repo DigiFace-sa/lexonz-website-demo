@@ -1,0 +1,15 @@
+# Internal source and presentation files
+*.pdf
+*.key
+
+# Root-level working imagery and exports
+/*.png
+
+# Retired partner assets
+public/media/wyda-*
+
+# Local and OS files
+.DS_Store
+.vscode/
+.idea/
+
