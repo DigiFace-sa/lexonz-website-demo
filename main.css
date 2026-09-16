@@ -116,3 +116,7 @@ html{color-scheme:only light}.site-header .brand img,.footer-top>img{filter:brig
 /* Compact header geometry keeps both brand controls fully visible on narrow phones. */
 @media(max-width:800px){.site-header{gap:12px}.site-header .brand{flex:0 0 auto}.header-actions{flex:0 0 auto;gap:7px;min-width:0}.lang-switch{padding:8px 4px;white-space:nowrap}.menu-toggle{flex:0 0 42px;width:42px;padding:3px}.menu-toggle .steering-icon{width:32px;height:32px}}
 @media(max-width:370px){.brand img{width:92px}.lang-switch{font-size:13px}}
+
+/* Editorial spacing for the revised bilingual headlines. */
+@media(max-width:800px){body:not(.arabic) .hero h1,body:not(.arabic) .pathway h2,body:not(.arabic) .inside h2{line-height:.98}.arabic .main-nav:before{content:'ليكسونز / القائمة';letter-spacing:0}.arabic .panel-image .image-tag:after{content:'04 / الحلبة';letter-spacing:0}}
+@media(max-width:360px){body:not(.arabic) .hero h1{font-size:38px}}

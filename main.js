@@ -1,7 +1,14 @@
 document.addEventListener('DOMContentLoaded',()=>{
  const root=document.documentElement,body=document.body,toggle=document.querySelector('[data-lang-toggle]'),nav=document.querySelector('.main-nav'),menu=document.querySelector('.menu-toggle');
- const setLanguage=lang=>{const ar=lang==='ar';root.lang=lang;root.dir=ar?'rtl':'ltr';body.classList.toggle('arabic',ar);document.querySelectorAll('[data-en][data-ar]').forEach(el=>el.innerHTML=el.dataset[lang]);toggle.textContent=ar?'EN':'عربي';toggle.setAttribute('aria-label',ar?'Switch to English':'التبديل إلى العربية');localStorage.setItem('lexonz-language',lang);window.ScrollTrigger?.refresh()};
- const setMenu=open=>{nav.classList.toggle('open',open);menu.classList.toggle('active',open);body.classList.toggle('menu-open',open);menu.setAttribute('aria-expanded',open);menu.setAttribute('aria-label',open?'Close menu':'Open menu')};
+ const setLanguage=lang=>{const ar=lang==='ar';root.lang=lang;root.dir=ar?'rtl':'ltr';body.classList.toggle('arabic',ar);document.querySelectorAll('[data-en][data-ar]').forEach(el=>el.innerHTML=el.dataset[lang]);toggle.textContent=ar?'EN':'عربي';toggle.setAttribute('aria-label',ar?'Switch to English':'التبديل إلى العربية');
+ document.title=lang==='ar'?"ليكسونز | رياضة المحركات وتطوير السائقين والشراكات":"LEXONZ | Saudi Motorsport, Driver Development & Partnerships";
+ document.querySelector('meta[name="description"]').content=lang==='ar'?"ليكسونز شركة سعودية في رياضة المحركات تجمع تطوير السائقين وإدارة مسيرتهم الرياضية والاستثمار والشراكات والإعلام.":"LEXONZ is a Saudi motorsport company connecting driver development, career management, investment, partnerships and media.";
+ nav.setAttribute('aria-label',lang==='ar'?'التنقل الرئيسي':'Main navigation');
+ document.querySelector('.brand').setAttribute('aria-label',lang==='ar'?'ليكسونز — الصفحة الرئيسية':'LEXONZ home');
+ const menuOpen=menu.getAttribute('aria-expanded')==='true';
+ menu.setAttribute('aria-label',lang==='ar'?(menuOpen?'إغلاق القائمة':'فتح القائمة'):(menuOpen?'Close menu':'Open menu'));
+ localStorage.setItem('lexonz-language',lang);window.ScrollTrigger?.refresh()};
+ const setMenu=open=>{nav.classList.toggle('open',open);menu.classList.toggle('active',open);body.classList.toggle('menu-open',open);menu.setAttribute('aria-expanded',open);menu.setAttribute('aria-label',root.lang==='ar'?(open?'إغلاق القائمة':'فتح القائمة'):(open?'Close menu':'Open menu'))};
  toggle.addEventListener('click',()=>setLanguage(root.lang==='ar'?'en':'ar'));menu.addEventListener('click',()=>setMenu(!nav.classList.contains('open')));nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));setLanguage(localStorage.getItem('lexonz-language')||'en');
  document.addEventListener('keydown',event=>{if(event.key==='Escape')setMenu(false)});
  let lenis;
