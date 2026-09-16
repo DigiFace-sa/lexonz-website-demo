@@ -120,3 +120,11 @@ html{color-scheme:only light}.site-header .brand img,.footer-top>img{filter:brig
 /* Editorial spacing for the revised bilingual headlines. */
 @media(max-width:800px){body:not(.arabic) .hero h1,body:not(.arabic) .pathway h2,body:not(.arabic) .inside h2{line-height:.98}.arabic .main-nav:before{content:'ليكسونز / القائمة';letter-spacing:0}.arabic .panel-image .image-tag:after{content:'04 / الحلبة';letter-spacing:0}}
 @media(max-width:360px){body:not(.arabic) .hero h1{font-size:38px}}
+
+/* Keep the complete statement and link inside the pinned desktop panel. */
+@media(min-width:801px){
+  .panel-copy-primary{padding:clamp(24px,7vh,80px) clamp(32px,7vw,120px);justify-content:flex-start;overflow-y:auto}
+  .panel-copy-primary .statement-desktop{flex-shrink:0;width:100%;max-width:950px;font-size:clamp(24px,min(4.2vw,6.2vh),64px);line-height:1.16;letter-spacing:-.025em;margin: auto 0 clamp(24px,4vh,40px)}
+  .panel-copy-primary .manifesto-desktop-link{flex-shrink:0;max-width:100%;margin-bottom:auto;line-height:1.4}
+  .arabic .panel-copy-primary .statement-desktop{font-size:clamp(24px,min(4vw,5.6vh),60px);line-height:1.4;letter-spacing:0}
+}
