@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded',()=>{
  const ar={
   "About": "من نحن",
   "Services": "خدماتنا",
-  "The pathway": "المسار",
-  "Inside Lexonz": "داخل ليكسونز",
-  "LEXONZ / SERVICES": "ليكسونز / الخدمات",
+  "Our approach": "منهجنا",
+  "Field notes": "من الميدان",
+  "MOTORSPORT INVESTMENT & REPRESENTATION": "الاستثمار والتمثيل في رياضة المحركات",
   "ONE ECOSYSTEM.": "منظومة واحدة.",
   "LEXONZ / ON TRACK": "ليكسونز / على الحلبة",
   "SILVERSTONE · UK": "سيلفرستون · المملكة المتحدة",
@@ -122,6 +122,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   "Contact": "تواصل معنا",
   "Talk to our team": "تواصل مع فريقنا",
   "FIVE PILLARS.": "خمس ركائز.",
+  "Managing and investing in talent, with a growing presence across motorsport. Five connected pillars turn that position into practical support for drivers, teams, investors and partners.": "ندير المواهب ونستثمر فيها، مع حضور متنامٍ في رياضة المحركات. وتحول خمس ركائز مترابطة هذه المكانة إلى دعم عملي للسائقين والفرق والمستثمرين والشركاء.",
   "Investment, development, management, commercial strategy and media—five connected pillars supporting drivers, teams and partners through one motorsport company.": "الاستثمار والتطوير والإدارة والاستراتيجية التجارية والإعلام: خمس ركائز مترابطة تدعم السائقين والفرق والشركاء ضمن شركة واحدة لرياضة المحركات.",
   "Explore our services": "اكتشف خدماتنا",
   "THE LEXONZ APPROACH": "منهج ليكسونز",
@@ -168,6 +169,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   "PLAN YOUR": "خطّط",
   "NEXT STEP.": "لخطوتك التالية.",
   "Saudi ambition. Connected through motorsport.": "طموح سعودي تجمعه رياضة المحركات.",
+  "Motorsport investment & representation. Managing and investing in talent, with a growing presence across motorsport.": "الاستثمار والتمثيل في رياضة المحركات. ندير المواهب ونستثمر فيها، مع حضور متنامٍ في رياضة المحركات.",
   "BUILT FOR MOTORSPORT": "من أجل رياضة المحركات",
   "LEXONZ / 01": "ليكسونز / 01",
   "LEXONZ / 02": "ليكسونز / 02"

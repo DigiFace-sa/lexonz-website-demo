@@ -1,16 +1,38 @@
 document.addEventListener('DOMContentLoaded',()=>{
  const root=document.documentElement,body=document.body,toggle=document.querySelector('[data-lang-toggle]'),nav=document.querySelector('.main-nav'),menu=document.querySelector('.menu-toggle');
+ const circuitList=document.querySelector('.circuit-list'),circuitSet=document.querySelector('.circuit-set'),circuitModal=document.querySelector('.circuit-modal');
+ if(circuitList&&circuitSet){const clone=circuitSet.cloneNode(true);clone.setAttribute('aria-hidden','true');clone.querySelectorAll('button').forEach(button=>button.tabIndex=-1);circuitList.append(clone);requestAnimationFrame(()=>body.classList.add('circuit-ready'))}
+ let activeCircuit=null,lastCircuitTrigger=null;
+ const updateCircuitModal=card=>{
+  if(!card||!circuitModal)return;
+  const lang=root.lang==='ar'?'ar':'en',name=card.dataset.circuit,location=card.dataset.location,index=card.querySelector('.circuit-card-copy small')?.textContent.slice(0,2)||'01',image=circuitModal.querySelector('.circuit-modal-media img');
+  circuitModal.querySelector('#circuit-modal-title').textContent=name.toUpperCase();
+  circuitModal.querySelector('.circuit-modal-location').textContent=location;
+  circuitModal.querySelector('.circuit-modal-index').textContent=`LEXONZ / TRACK ${index}`;
+  circuitModal.querySelector('.circuit-modal-description').textContent=card.dataset[`${lang}Description`];
+  circuitModal.querySelector('[data-fact-country]').textContent=card.dataset[lang==='ar'?'countryAr':'countryEn'];
+  circuitModal.querySelector('[data-fact-length]').textContent=card.dataset.length;
+  circuitModal.querySelector('[data-fact-corners]').textContent=card.dataset.corners;
+  circuitModal.querySelector('[data-fact-opened]').textContent=card.dataset.opened;
+  circuitModal.querySelector('[data-fact-age]').textContent=card.dataset[lang==='ar'?'ageAr':'ageEn'];
+  circuitModal.querySelector('.circuit-facts').setAttribute('aria-label',lang==='ar'?'حقائق الحلبة':'Circuit facts');
+  image.src=card.dataset.image;
+  image.alt=lang==='ar'?`قصة حلبة ${name}`:`${name} circuit story`;
+ };
+ const closeCircuitModal=()=>{if(!circuitModal||!circuitModal.classList.contains('is-open'))return;circuitModal.classList.remove('is-open');circuitModal.setAttribute('aria-hidden','true');body.classList.remove('circuit-modal-open');lenis?.start();lastCircuitTrigger?.focus({preventScroll:true});activeCircuit=null};
+ circuitList?.addEventListener('click',event=>{const card=event.target.closest('.circuit-card');if(!card)return;activeCircuit=card;lastCircuitTrigger=card;updateCircuitModal(card);circuitModal.classList.add('is-open');circuitModal.setAttribute('aria-hidden','false');body.classList.add('circuit-modal-open');lenis?.stop();requestAnimationFrame(()=>circuitModal.querySelector('.circuit-modal-close')?.focus())});
+ circuitModal?.querySelectorAll('.circuit-modal-close,.circuit-modal-backdrop').forEach(button=>button.addEventListener('click',closeCircuitModal));
  const setLanguage=lang=>{const ar=lang==='ar';root.lang=lang;root.dir=ar?'rtl':'ltr';body.classList.toggle('arabic',ar);document.querySelectorAll('[data-en][data-ar]').forEach(el=>el.innerHTML=el.dataset[lang]);toggle.textContent=ar?'EN':'عربي';toggle.setAttribute('aria-label',ar?'Switch to English':'التبديل إلى العربية');
- document.title=lang==='ar'?"ليكسونز | رياضة المحركات وتطوير السائقين والشراكات":"LEXONZ | Saudi Motorsport, Driver Development & Partnerships";
- document.querySelector('meta[name="description"]').content=lang==='ar'?"ليكسونز شركة سعودية في رياضة المحركات تجمع تطوير السائقين وإدارة مسيرتهم الرياضية والاستثمار والشراكات والإعلام.":"LEXONZ is a Saudi motorsport company connecting driver development, career management, investment, partnerships and media.";
+ document.title=lang==='ar'?"ليكسونز | الاستثمار والتمثيل في رياضة المحركات":"LEXONZ | Motorsport Investment & Representation";
+ document.querySelector('meta[name="description"]').content=lang==='ar'?"ليكسونز شركة سعودية للاستثمار والتمثيل في رياضة المحركات، تدير المواهب وتستثمر فيها بحضور متنامٍ عبر القطاع.":"LEXONZ is a Saudi motorsport investment and representation company, managing and investing in talent with a growing presence across motorsport.";
  nav.setAttribute('aria-label',lang==='ar'?'التنقل الرئيسي':'Main navigation');
  document.querySelector('.brand').setAttribute('aria-label',lang==='ar'?'ليكسونز — الصفحة الرئيسية':'LEXONZ home');
  const menuOpen=menu.getAttribute('aria-expanded')==='true';
  menu.setAttribute('aria-label',lang==='ar'?(menuOpen?'إغلاق القائمة':'فتح القائمة'):(menuOpen?'Close menu':'Open menu'));
- localStorage.setItem('lexonz-language',lang);window.ScrollTrigger?.refresh()};
+ if(activeCircuit)updateCircuitModal(activeCircuit);localStorage.setItem('lexonz-language',lang);window.ScrollTrigger?.refresh()};
  const setMenu=open=>{nav.classList.toggle('open',open);menu.classList.toggle('active',open);body.classList.toggle('menu-open',open);menu.setAttribute('aria-expanded',open);menu.setAttribute('aria-label',root.lang==='ar'?(open?'إغلاق القائمة':'فتح القائمة'):(open?'Close menu':'Open menu'))};
  toggle.addEventListener('click',()=>setLanguage(root.lang==='ar'?'en':'ar'));menu.addEventListener('click',()=>setMenu(!nav.classList.contains('open')));nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));setLanguage(localStorage.getItem('lexonz-language')||'en');
- document.addEventListener('keydown',event=>{if(event.key==='Escape')setMenu(false)});
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'){setMenu(false);closeCircuitModal()}});
  let lenis;
  if(window.Lenis){lenis=new Lenis({duration:1.2,smoothWheel:true});lenis.on('scroll',window.ScrollTrigger?.update);window.gsap?.ticker.add(t=>lenis.raf(t*1000));window.gsap?.ticker.lagSmoothing(0)}
  document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{
@@ -23,10 +45,11 @@ document.addEventListener('DOMContentLoaded',()=>{
   history.replaceState(null,'',link.getAttribute('href'));
  }));
  if(!window.gsap)return;gsap.registerPlugin(ScrollTrigger);const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
- gsap.timeline({onComplete:()=>document.querySelector('.loader')?.remove()}).to('.loader span',{width:190,duration:.65,ease:'power2.inOut'}).to('.loader img,.loader small',{opacity:0,y:-10,duration:.3}).to('.loader',{yPercent:-100,duration:.8,ease:'power4.inOut'}).from('.hero-reveal',{y:45,opacity:0,duration:.8,stagger:.12,ease:'power3.out'},'-=.25');
+ gsap.timeline({onComplete:()=>{document.querySelector('.loader')?.remove();if(location.hash&&location.hash!=='#top')document.querySelector(location.hash)?.scrollIntoView()}}).to('.loader span',{width:190,duration:.65,ease:'power2.inOut'}).to('.loader img,.loader small',{opacity:0,y:-10,duration:.3}).to('.loader',{yPercent:-100,duration:.8,ease:'power4.inOut'}).from('.hero-reveal',{y:45,opacity:0,duration:.8,stagger:.12,ease:'power3.out'},'-=.25');
  if(reduce)return;
  gsap.to('.hero-media',{yPercent:13,scale:1.12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
  gsap.to('.speed-lines',{xPercent:12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+ gsap.from('.circuit-rail-head > *',{y:24,opacity:0,duration:.7,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'.circuit-rail',start:'top 86%'}});
  if(innerWidth>800){gsap.to('.manifesto-track',{x:()=>-(document.querySelector('.manifesto-track').scrollWidth-innerWidth),ease:'none',scrollTrigger:{trigger:'.manifesto',start:'top top',end:'bottom bottom',scrub:1,pin:'.manifesto-track',invalidateOnRefresh:true}})}else{const mobilePanels=gsap.utils.toArray('.manifesto-panel').filter(panel=>getComputedStyle(panel).display!=='none');mobilePanels.forEach(panel=>ScrollTrigger.create({trigger:panel,start:'top 55%',end:'bottom 45%',toggleClass:{targets:panel,className:'is-current'}}));mobilePanels.slice(1).forEach(panel=>gsap.from(panel,{yPercent:10,borderRadius:'22px 22px 0 0',ease:'none',scrollTrigger:{trigger:panel,start:'top bottom',end:'top top',scrub:.65}}));gsap.timeline({scrollTrigger:{trigger:'.panel-intro',start:'top 72%',once:true}}).from('.panel-intro .micro',{x:-24,opacity:0,duration:.45}).from('.panel-intro h2',{y:45,opacity:0,duration:.7,ease:'power3.out'},'-=.18').from('.mobile-telemetry span',{y:15,opacity:0,stagger:.1,duration:.4},'-=.25').fromTo('.panel-intro .giant-index',{scale:.72,opacity:0},{scale:1,opacity:1,duration:1,ease:'power3.out'},'-=.65');gsap.to('.panel-intro .giant-index',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'.panel-intro',start:'top bottom',end:'bottom top',scrub:.7}});gsap.utils.toArray('.panel-copy').filter(panel=>getComputedStyle(panel).display!=='none').forEach(panel=>gsap.from(panel.querySelectorAll('.mobile-manifesto-copy > *'),{y:40,opacity:0,stagger:.12,duration:.7,ease:'power3.out',scrollTrigger:{trigger:panel,start:'top 58%',once:true}}));gsap.fromTo('.panel-image img',{scale:1.2},{scale:1.08,duration:1.4,ease:'power3.out',scrollTrigger:{trigger:'.panel-image',start:'top 62%',once:true}})}
  gsap.utils.toArray('.stage').forEach((el,i)=>{gsap.from(el,{y:65,opacity:0,duration:.8,delay:i*.08,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 82%'}});gsap.from(el.querySelector('.stage-line i'),{xPercent:-500,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 78%'}})});
  gsap.from('.inside-head > *',{y:55,opacity:0,stagger:.12,duration:.9,ease:'power3.out',scrollTrigger:{trigger:'.inside-head',start:'top 78%'}});gsap.utils.toArray('.inside-shot').forEach((el,i)=>gsap.from(el,{y:70,opacity:0,duration:.8,delay:(i%3)*.08,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}}));
