@@ -15,6 +15,10 @@ document.addEventListener('DOMContentLoaded',()=>{
   circuitModal.querySelector('[data-fact-corners]').textContent=card.dataset.corners;
   circuitModal.querySelector('[data-fact-opened]').textContent=card.dataset.opened;
   circuitModal.querySelector('[data-fact-age]').textContent=card.dataset[lang==='ar'?'ageAr':'ageEn'];
+  const history=card.dataset[`${lang}History`],historyPanel=circuitModal.querySelector('.circuit-history');
+  historyPanel.hidden=!history;
+  circuitModal.querySelector('.circuit-history-copy').textContent=history||'';
+  circuitModal.querySelector('[data-history-range]').textContent=`${card.dataset.opened} — ${lang==='ar'?'اليوم':'TODAY'}`;
   circuitModal.querySelector('.circuit-facts').setAttribute('aria-label',lang==='ar'?'حقائق الحلبة':'Circuit facts');
   image.src=card.dataset.image;
   image.alt=lang==='ar'?`قصة حلبة ${name}`:`${name} circuit story`;
