@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   insideSlider.querySelector('[data-cinema-next]').addEventListener('click',()=>goTo(current+1,1));
   playButton.addEventListener('click',()=>{if(isPaused()&&!reduced)userPaused=false;else userPaused=true;schedule()});
   stage.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'){event.preventDefault();goTo(current-1,-1)}else if(event.key==='ArrowRight'){event.preventDefault();goTo(current+1,1)}else if(event.key==='Home'){event.preventDefault();goTo(0,-1)}else if(event.key==='End'){event.preventDefault();goTo(slides.length-1,1)}else if(event.key===' '){event.preventDefault();userPaused=!userPaused;schedule()}});
-  stage.addEventListener('pointerdown',event=>{touchStartX=event.clientX});stage.addEventListener('pointerup',event=>{const distance=event.clientX-touchStartX;if(Math.abs(distance)>45)goTo(current+(distance<0?1:-1),distance<0?1:-1)});
+  stage.addEventListener('pointerdown',event=>{touchStartX=event.clientX;stage.focus({preventScroll:true})});stage.addEventListener('pointerup',event=>{const distance=event.clientX-touchStartX;if(Math.abs(distance)>45)goTo(current+(distance<0?1:-1),distance<0?1:-1)});
   document.addEventListener('visibilitychange',schedule);
   new MutationObserver(renderCopy).observe(root,{attributes:true,attributeFilter:['lang','dir']});
   renderCopy();schedule();

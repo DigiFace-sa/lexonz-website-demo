@@ -375,3 +375,29 @@ body.circuit-modal-open{overflow:hidden}
 }
 @media(max-width:420px){.inside-cinema-stage{min-height:560px}.inside-cinema-copy{left:30px;right:22px}.inside-cinema-controls{left:30px}.arabic .inside-cinema-copy{right:30px;left:22px}.arabic .inside-cinema-controls{right:30px}.cinema-thumb{flex-basis:54vw}}
 @media(prefers-reduced-motion:reduce){.cinema-progress i{animation:none}.cinema-thumb,.cinema-thumb img,.cinema-thumb:after{transition:none}}
+
+/* Invisible-slider treatment: the story moves, the interface stays out of sight. */
+.inside-cinema{width:min(1500px,calc(100% - 96px))}
+.inside-cinema-stage{min-height:clamp(580px,50vw,760px);border:0;background:transparent;box-shadow:none}
+.inside-cinema-stage:focus-visible{border:0;box-shadow:inset 0 0 0 1px rgba(7,245,237,.48)}
+.inside-cinema-stage:before{opacity:.68}
+.inside-cinema-stage:after{opacity:.55}
+.inside-cinema-filmstrip{display:none}
+.inside-cinema-counter{top:clamp(32px,4vw,58px);right:clamp(24px,3.2vw,50px);gap:6px;font-size:clamp(18px,2.4vw,34px);font-weight:600;letter-spacing:-1px;opacity:.58;transition:opacity .3s}
+.inside-cinema-counter i{font-size:10px}.inside-cinema-counter small{font-size:8px}
+.inside-cinema-controls{right:clamp(24px,3.2vw,50px);bottom:clamp(22px,2.4vw,38px);opacity:0;pointer-events:none;transform:translateY(9px);transition:opacity .32s,transform .32s}
+.inside-cinema-stage:hover .inside-cinema-controls,.inside-cinema-stage:focus .inside-cinema-controls,.inside-cinema-stage:focus-within .inside-cinema-controls{opacity:1;pointer-events:auto;transform:none}
+.inside-cinema-stage:hover .inside-cinema-counter,.inside-cinema-stage:focus .inside-cinema-counter,.inside-cinema-stage:focus-within .inside-cinema-counter{opacity:1}
+.cinema-arrow,.cinema-play{border-color:rgba(255,255,255,.2);background:rgba(9,10,10,.2)}
+.inside .gallery-foot{margin-top:12px}
+.arabic .inside-cinema-counter{right:auto;left:clamp(24px,3.2vw,50px)}
+
+@media(max-width:1000px){.inside-cinema{width:calc(100% - 48px)}}
+@media(max-width:800px){
+  .inside-cinema{width:100%}
+  .inside-cinema-stage{min-height:clamp(540px,148vw,690px)}
+  .inside-cinema-counter{top:25px;right:20px;font-size:21px}.arabic .inside-cinema-counter{right:auto;left:20px}
+  .inside-cinema-controls{left:30px;right:20px;bottom:24px}.arabic .inside-cinema-controls{right:30px;left:20px}
+  .inside-cinema-copy{bottom:92px}
+  .inside .gallery-foot{margin-top:8px}
+}
