@@ -48,6 +48,53 @@ document.addEventListener('DOMContentLoaded',()=>{
   else target.scrollIntoView({behavior:'smooth',block:'start'});
   history.replaceState(null,'',link.getAttribute('href'));
  }));
+ const insideSlider=document.querySelector('[data-inside-slider]');
+ if(insideSlider){
+  const slides=[...insideSlider.querySelectorAll('.inside-slide')],thumbs=[...insideSlider.querySelectorAll('[data-cinema-go]')],stage=insideSlider.querySelector('.inside-cinema-stage'),filmstrip=insideSlider.querySelector('.inside-cinema-filmstrip'),copyBlock=insideSlider.querySelector('.inside-cinema-copy'),title=insideSlider.querySelector('[data-cinema-title]'),copy=insideSlider.querySelector('[data-cinema-copy]'),currentLabel=insideSlider.querySelector('[data-cinema-current]'),countLabel=insideSlider.querySelector('[data-cinema-count]'),progress=insideSlider.querySelector('.cinema-progress i'),playButton=insideSlider.querySelector('[data-cinema-play]'),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let current=0,timer=null,userPaused=false,interactionPaused=false,hoverSuppressed=false,touchStartX=0,transitioning=false;
+  const two=n=>String(n+1).padStart(2,'0');
+  const localizeControls=()=>{const ar=root.lang==='ar',paused=isPaused();insideSlider.setAttribute('aria-label',ar?'رحلة سائق ليكسونز':'Lexonz driver journey');filmstrip.setAttribute('aria-label',ar?'اختر قصة من الحلبة':'Choose a paddock story');insideSlider.querySelector('[data-cinema-prev]').setAttribute('aria-label',ar?'القصة السابقة':'Previous story');insideSlider.querySelector('[data-cinema-next]').setAttribute('aria-label',ar?'القصة التالية':'Next story');playButton.setAttribute('aria-label',paused?(ar?'تشغيل العرض':'Play slideshow'):(ar?'إيقاف العرض مؤقتاً':'Pause slideshow'))};
+  const renderCopy=()=>{const lang=root.lang==='ar'?'Ar':'En',slide=slides[current];title.textContent=slide.dataset[`title${lang}`];copy.textContent=slide.dataset[`copy${lang}`];currentLabel.textContent=countLabel.textContent=two(current);localizeControls()};
+  const resetProgress=()=>{progress.style.animation='none';progress.offsetWidth;progress.style.animation=''};
+  const isPaused=()=>reduced||userPaused||interactionPaused||document.hidden;
+  const schedule=()=>{clearTimeout(timer);insideSlider.classList.toggle('is-paused',isPaused());localizeControls();if(isPaused())return;resetProgress();timer=setTimeout(()=>goTo((current+1)%slides.length,1,false),6500)};
+  const finishTransition=(oldSlide,newSlide)=>{oldSlide.classList.remove('is-leaving');oldSlide.removeAttribute('style');oldSlide.querySelector('img').removeAttribute('style');newSlide.removeAttribute('style');newSlide.querySelector('img').removeAttribute('style');transitioning=false};
+  const goTo=(next,direction=1,manual=true)=>{
+   next=(next+slides.length)%slides.length;
+   if(next===current||transitioning){schedule();return}
+   transitioning=true;
+   const oldIndex=current,oldSlide=slides[oldIndex],newSlide=slides[next],rtl=root.dir==='rtl',fromRight=(direction>0)!==rtl,startClip=fromRight?'inset(0 0 0 100%)':'inset(0 100% 0 0)';
+   current=next;
+   oldSlide.classList.remove('is-active');oldSlide.classList.add('is-leaving');oldSlide.setAttribute('aria-hidden','true');
+   newSlide.classList.add('is-active');newSlide.setAttribute('aria-hidden','false');
+   thumbs.forEach((thumb,index)=>{const active=index===current;thumb.classList.toggle('is-active',active);thumb.setAttribute('aria-selected',active)});
+   currentLabel.textContent=countLabel.textContent=two(current);
+   if(innerWidth<=800){const thumb=thumbs[current];filmstrip.scrollTo({left:thumb.offsetLeft-(filmstrip.clientWidth-thumb.offsetWidth)/2,behavior:reduced?'auto':'smooth'})}
+   if(window.gsap&&!reduced){
+    gsap.killTweensOf([oldSlide,newSlide,oldSlide.querySelector('img'),newSlide.querySelector('img'),...copyBlock.children]);
+    gsap.set(newSlide,{autoAlpha:1,clipPath:startClip});gsap.set(newSlide.querySelector('img'),{scale:1.09});
+    const timeline=gsap.timeline({onComplete:()=>finishTransition(oldSlide,newSlide)});
+    timeline.to(oldSlide.querySelector('img'),{scale:1.045,duration:1.05,ease:'power2.out'},0)
+     .to(oldSlide,{autoAlpha:.32,duration:.62,ease:'power2.out'},0)
+     .to(newSlide,{clipPath:'inset(0 0 0 0)',duration:1.05,ease:'power4.inOut'},0)
+     .to(newSlide.querySelector('img'),{scale:1,duration:1.25,ease:'power3.out'},0)
+     .to(copyBlock.children,{y:-18,opacity:0,duration:.24,stagger:.025,ease:'power2.in'},0)
+     .call(renderCopy,[],.28)
+     .fromTo(copyBlock.children,{y:24,opacity:0},{y:0,opacity:1,duration:.58,stagger:.055,ease:'power3.out'},.34);
+   }else{renderCopy();finishTransition(oldSlide,newSlide)}
+   schedule();
+  };
+  thumbs.forEach((thumb,index)=>thumb.addEventListener('click',()=>goTo(index,index>current?1:-1)));
+  insideSlider.querySelector('[data-cinema-prev]').addEventListener('click',()=>goTo(current-1,-1));
+  insideSlider.querySelector('[data-cinema-next]').addEventListener('click',()=>goTo(current+1,1));
+  playButton.addEventListener('click',()=>{if(isPaused()&&!reduced){userPaused=false;interactionPaused=false;hoverSuppressed=true}else userPaused=true;schedule()});
+  stage.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'){event.preventDefault();goTo(current-1,-1)}else if(event.key==='ArrowRight'){event.preventDefault();goTo(current+1,1)}else if(event.key==='Home'){event.preventDefault();goTo(0,-1)}else if(event.key==='End'){event.preventDefault();goTo(slides.length-1,1)}else if(event.key===' '){event.preventDefault();userPaused=!userPaused;schedule()}});
+  stage.addEventListener('pointerdown',event=>{touchStartX=event.clientX});stage.addEventListener('pointerup',event=>{const distance=event.clientX-touchStartX;if(Math.abs(distance)>45)goTo(current+(distance<0?1:-1),distance<0?1:-1)});
+  if(matchMedia('(hover:hover)').matches){insideSlider.addEventListener('mouseenter',()=>{if(!hoverSuppressed){interactionPaused=true;schedule()}});insideSlider.addEventListener('mouseleave',()=>{interactionPaused=false;hoverSuppressed=false;schedule()})}
+  document.addEventListener('visibilitychange',schedule);
+  new MutationObserver(renderCopy).observe(root,{attributes:true,attributeFilter:['lang','dir']});
+  renderCopy();schedule();
+ }
  if(!window.gsap)return;gsap.registerPlugin(ScrollTrigger);const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
  gsap.timeline({onComplete:()=>{document.querySelector('.loader')?.remove();if(location.hash&&location.hash!=='#top')document.querySelector(location.hash)?.scrollIntoView()}}).to('.loader span',{width:190,duration:.65,ease:'power2.inOut'}).to('.loader img,.loader small',{opacity:0,y:-10,duration:.3}).to('.loader',{yPercent:-100,duration:.8,ease:'power4.inOut'}).from('.hero-reveal',{y:45,opacity:0,duration:.8,stagger:.12,ease:'power3.out'},'-=.25');
  if(reduce)return;
@@ -56,7 +103,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  gsap.from('.circuit-rail-head > *',{y:24,opacity:0,duration:.7,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'.circuit-rail',start:'top 86%'}});
  if(innerWidth>800){gsap.to('.manifesto-track',{x:()=>-(document.querySelector('.manifesto-track').scrollWidth-innerWidth),ease:'none',scrollTrigger:{trigger:'.manifesto',start:'top top',end:'bottom bottom',scrub:1,pin:'.manifesto-track',invalidateOnRefresh:true}})}else{const mobilePanels=gsap.utils.toArray('.manifesto-panel').filter(panel=>getComputedStyle(panel).display!=='none');mobilePanels.forEach(panel=>ScrollTrigger.create({trigger:panel,start:'top 55%',end:'bottom 45%',toggleClass:{targets:panel,className:'is-current'}}));mobilePanels.slice(1).forEach(panel=>gsap.from(panel,{yPercent:10,borderRadius:'22px 22px 0 0',ease:'none',scrollTrigger:{trigger:panel,start:'top bottom',end:'top top',scrub:.65}}));gsap.timeline({scrollTrigger:{trigger:'.panel-intro',start:'top 72%',once:true}}).from('.panel-intro .micro',{x:-24,opacity:0,duration:.45}).from('.panel-intro h2',{y:45,opacity:0,duration:.7,ease:'power3.out'},'-=.18').from('.mobile-telemetry span',{y:15,opacity:0,stagger:.1,duration:.4},'-=.25').fromTo('.panel-intro .giant-index',{scale:.72,opacity:0},{scale:1,opacity:1,duration:1,ease:'power3.out'},'-=.65');gsap.to('.panel-intro .giant-index',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'.panel-intro',start:'top bottom',end:'bottom top',scrub:.7}});gsap.utils.toArray('.panel-copy').filter(panel=>getComputedStyle(panel).display!=='none').forEach(panel=>gsap.from(panel.querySelectorAll('.mobile-manifesto-copy > *'),{y:40,opacity:0,stagger:.12,duration:.7,ease:'power3.out',scrollTrigger:{trigger:panel,start:'top 58%',once:true}}));gsap.fromTo('.panel-image img',{scale:1.2},{scale:1.08,duration:1.4,ease:'power3.out',scrollTrigger:{trigger:'.panel-image',start:'top 62%',once:true}})}
  gsap.utils.toArray('.stage').forEach((el,i)=>{gsap.from(el,{y:65,opacity:0,duration:.8,delay:i*.08,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 82%'}});gsap.from(el.querySelector('.stage-line i'),{xPercent:-500,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 78%'}})});
- gsap.from('.inside-head > *',{y:55,opacity:0,stagger:.12,duration:.9,ease:'power3.out',scrollTrigger:{trigger:'.inside-head',start:'top 78%'}});gsap.utils.toArray('.inside-shot').forEach((el,i)=>gsap.from(el,{y:70,opacity:0,duration:.8,delay:(i%3)*.08,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}}));
+ gsap.from('.inside-head > *',{y:55,opacity:0,stagger:.12,duration:.9,ease:'power3.out',scrollTrigger:{trigger:'.inside-head',start:'top 78%'}});gsap.from('.inside-cinema',{y:70,opacity:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:'.inside-cinema',start:'top 88%'}});
  gsap.to('.impact-media',{yPercent:15,ease:'none',scrollTrigger:{trigger:'.impact',start:'top bottom',end:'bottom top',scrub:true}});gsap.from('.impact-copy > *',{y:60,opacity:0,stagger:.12,duration:1,scrollTrigger:{trigger:'.impact-copy',start:'top 70%'}});gsap.to('.join-visual img',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'.join',start:'top bottom',end:'bottom top',scrub:true}});gsap.from('.join-copy > *',{y:45,opacity:0,stagger:.1,duration:.8,scrollTrigger:{trigger:'.join-copy',start:'top 78%'}});
  const cursor=document.querySelector('.cursor');addEventListener('pointermove',e=>gsap.to(cursor,{x:e.clientX,y:e.clientY,duration:.18}));document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>gsap.to(cursor,{scale:3,duration:.2}));el.addEventListener('mouseleave',()=>gsap.to(cursor,{scale:1,duration:.2}))});
 });
