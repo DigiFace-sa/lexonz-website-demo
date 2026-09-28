@@ -51,13 +51,13 @@ document.addEventListener('DOMContentLoaded',()=>{
  const insideSlider=document.querySelector('[data-inside-slider]');
  if(insideSlider){
   const slides=[...insideSlider.querySelectorAll('.inside-slide')],thumbs=[...insideSlider.querySelectorAll('[data-cinema-go]')],stage=insideSlider.querySelector('.inside-cinema-stage'),filmstrip=insideSlider.querySelector('.inside-cinema-filmstrip'),copyBlock=insideSlider.querySelector('.inside-cinema-copy'),title=insideSlider.querySelector('[data-cinema-title]'),copy=insideSlider.querySelector('[data-cinema-copy]'),currentLabel=insideSlider.querySelector('[data-cinema-current]'),countLabel=insideSlider.querySelector('[data-cinema-count]'),progress=insideSlider.querySelector('.cinema-progress i'),playButton=insideSlider.querySelector('[data-cinema-play]'),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let current=0,timer=null,userPaused=false,interactionPaused=false,hoverSuppressed=false,touchStartX=0,transitioning=false;
+  let current=0,timer=null,userPaused=false,touchStartX=0,transitioning=false;
   const two=n=>String(n+1).padStart(2,'0');
   const localizeControls=()=>{const ar=root.lang==='ar',paused=isPaused();insideSlider.setAttribute('aria-label',ar?'رحلة سائق ليكسونز':'Lexonz driver journey');filmstrip.setAttribute('aria-label',ar?'اختر قصة من الحلبة':'Choose a paddock story');insideSlider.querySelector('[data-cinema-prev]').setAttribute('aria-label',ar?'القصة السابقة':'Previous story');insideSlider.querySelector('[data-cinema-next]').setAttribute('aria-label',ar?'القصة التالية':'Next story');playButton.setAttribute('aria-label',paused?(ar?'تشغيل العرض':'Play slideshow'):(ar?'إيقاف العرض مؤقتاً':'Pause slideshow'))};
   const renderCopy=()=>{const lang=root.lang==='ar'?'Ar':'En',slide=slides[current];title.textContent=slide.dataset[`title${lang}`];copy.textContent=slide.dataset[`copy${lang}`];currentLabel.textContent=countLabel.textContent=two(current);localizeControls()};
   const resetProgress=()=>{progress.style.animation='none';progress.offsetWidth;progress.style.animation=''};
-  const isPaused=()=>reduced||userPaused||interactionPaused||document.hidden;
-  const schedule=()=>{clearTimeout(timer);insideSlider.classList.toggle('is-paused',isPaused());localizeControls();if(isPaused())return;resetProgress();timer=setTimeout(()=>goTo((current+1)%slides.length,1,false),6500)};
+  const isPaused=()=>reduced||userPaused||document.hidden;
+  const schedule=()=>{clearTimeout(timer);insideSlider.classList.toggle('is-paused',isPaused());localizeControls();if(isPaused())return;resetProgress();timer=setTimeout(()=>goTo((current+1)%slides.length,1,false),3500)};
   const finishTransition=(oldSlide,newSlide)=>{oldSlide.classList.remove('is-leaving');oldSlide.removeAttribute('style');oldSlide.querySelector('img').removeAttribute('style');newSlide.removeAttribute('style');newSlide.querySelector('img').removeAttribute('style');transitioning=false};
   const goTo=(next,direction=1,manual=true)=>{
    next=(next+slides.length)%slides.length;
@@ -74,23 +74,22 @@ document.addEventListener('DOMContentLoaded',()=>{
     gsap.killTweensOf([oldSlide,newSlide,oldSlide.querySelector('img'),newSlide.querySelector('img'),...copyBlock.children]);
     gsap.set(newSlide,{autoAlpha:1,clipPath:startClip});gsap.set(newSlide.querySelector('img'),{scale:1.09});
     const timeline=gsap.timeline({onComplete:()=>finishTransition(oldSlide,newSlide)});
-    timeline.to(oldSlide.querySelector('img'),{scale:1.045,duration:1.05,ease:'power2.out'},0)
-     .to(oldSlide,{autoAlpha:.32,duration:.62,ease:'power2.out'},0)
-     .to(newSlide,{clipPath:'inset(0 0 0 0)',duration:1.05,ease:'power4.inOut'},0)
-     .to(newSlide.querySelector('img'),{scale:1,duration:1.25,ease:'power3.out'},0)
-     .to(copyBlock.children,{y:-18,opacity:0,duration:.24,stagger:.025,ease:'power2.in'},0)
-     .call(renderCopy,[],.28)
-     .fromTo(copyBlock.children,{y:24,opacity:0},{y:0,opacity:1,duration:.58,stagger:.055,ease:'power3.out'},.34);
+    timeline.to(oldSlide.querySelector('img'),{scale:1.04,duration:.72,ease:'power2.out'},0)
+     .to(oldSlide,{autoAlpha:.32,duration:.42,ease:'power2.out'},0)
+     .to(newSlide,{clipPath:'inset(0 0 0 0)',duration:.72,ease:'power4.inOut'},0)
+     .to(newSlide.querySelector('img'),{scale:1,duration:.82,ease:'power3.out'},0)
+     .to(copyBlock.children,{y:-15,opacity:0,duration:.17,stagger:.018,ease:'power2.in'},0)
+     .call(renderCopy,[],.2)
+     .fromTo(copyBlock.children,{y:20,opacity:0},{y:0,opacity:1,duration:.38,stagger:.035,ease:'power3.out'},.24);
    }else{renderCopy();finishTransition(oldSlide,newSlide)}
    schedule();
   };
   thumbs.forEach((thumb,index)=>thumb.addEventListener('click',()=>goTo(index,index>current?1:-1)));
   insideSlider.querySelector('[data-cinema-prev]').addEventListener('click',()=>goTo(current-1,-1));
   insideSlider.querySelector('[data-cinema-next]').addEventListener('click',()=>goTo(current+1,1));
-  playButton.addEventListener('click',()=>{if(isPaused()&&!reduced){userPaused=false;interactionPaused=false;hoverSuppressed=true}else userPaused=true;schedule()});
+  playButton.addEventListener('click',()=>{if(isPaused()&&!reduced)userPaused=false;else userPaused=true;schedule()});
   stage.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'){event.preventDefault();goTo(current-1,-1)}else if(event.key==='ArrowRight'){event.preventDefault();goTo(current+1,1)}else if(event.key==='Home'){event.preventDefault();goTo(0,-1)}else if(event.key==='End'){event.preventDefault();goTo(slides.length-1,1)}else if(event.key===' '){event.preventDefault();userPaused=!userPaused;schedule()}});
   stage.addEventListener('pointerdown',event=>{touchStartX=event.clientX});stage.addEventListener('pointerup',event=>{const distance=event.clientX-touchStartX;if(Math.abs(distance)>45)goTo(current+(distance<0?1:-1),distance<0?1:-1)});
-  if(matchMedia('(hover:hover)').matches){insideSlider.addEventListener('mouseenter',()=>{if(!hoverSuppressed){interactionPaused=true;schedule()}});insideSlider.addEventListener('mouseleave',()=>{interactionPaused=false;hoverSuppressed=false;schedule()})}
   document.addEventListener('visibilitychange',schedule);
   new MutationObserver(renderCopy).observe(root,{attributes:true,attributeFilter:['lang','dir']});
   renderCopy();schedule();

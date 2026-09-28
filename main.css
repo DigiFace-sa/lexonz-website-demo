@@ -342,7 +342,7 @@ body.circuit-modal-open{overflow:hidden}
 .cinema-play i,.cinema-play i:after{display:block;width:2px;height:11px;background:#fff;content:''}.cinema-play i{position:relative;transform:translateX(-3px)}.cinema-play i:after{position:absolute;left:6px;top:0}
 .inside-cinema.is-paused .cinema-play i{width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid #fff;background:transparent;transform:translateX(1px)}.inside-cinema.is-paused .cinema-play i:after{display:none}
 .cinema-progress{position:relative;width:clamp(80px,10vw,150px);height:1px;overflow:hidden;background:rgba(255,255,255,.25)}
-.cinema-progress i{position:absolute;inset:0 auto 0 0;width:100%;background:var(--accent);transform-origin:left center;animation:cinemaTimer 6.5s linear forwards}
+.cinema-progress i{position:absolute;inset:0 auto 0 0;width:100%;background:var(--accent);transform-origin:left center;animation:cinemaTimer 3.5s linear forwards}
 .inside-cinema.is-paused .cinema-progress i{animation-play-state:paused}
 @keyframes cinemaTimer{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .inside-cinema-filmstrip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;margin-top:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1)}
