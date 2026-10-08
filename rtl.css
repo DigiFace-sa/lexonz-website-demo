@@ -1,0 +1,41 @@
+/* Arabic reading order without reflecting brand assets or circuit geometry. */
+.arabic :is(h1,h2,h3,h4,p,a,button,small,strong,span,summary,li){letter-spacing:0}
+.arabic :is(h1,h2,h3,h4){line-height:1.25;word-break:normal}
+.arabic :is(.micro,.circuit-card,.circuit-modal-copy,.image-tag,.mobile-telemetry,.gallery-sequence,.gallery-foot){direction:rtl;text-align:start}
+.arabic .inside-cinema-kicker{flex-direction:row;justify-content:flex-start}
+.arabic :is(.circuit-rail-head h2,.circuit-modal-copy h2){line-height:1.3;letter-spacing:0}
+.arabic .circuit-card-copy strong{font-family:var(--font-arabic);line-height:1.35}
+.arabic .circuit-card-copy :is(small,span,em){line-height:1.6}
+.arabic .circuit-fact{grid-template-columns:42px minmax(0,1fr)}
+.arabic .circuit-fact-icon{grid-column:1}
+.arabic .circuit-fact-copy{grid-column:2;grid-row:1}
+.arabic .circuit-fact-copy strong{line-height:1.5}
+.arabic .join-visual span{left:auto;right:24px}
+.arabic :is(.button,.text-link,.nav-cta,.gallery-foot a,.final-cta a)>i:not(.ui-arrow-up){transform:scaleX(-1)}
+.arabic .circuit-card:after{content:'↖'}
+.arabic :is(.footer-contact a,.footer-bottom>span:first-child,.inside-cinema-counter){direction:ltr;unicode-bidi:isolate}
+.arabic .footer-contact a{align-self:flex-start}
+.arabic .inside-cinema-controls{direction:ltr}
+.arabic .lang-switch{font-family:var(--font-latin)}
+/* Keep the first track on the right and move the duplicated rail toward the next track. */
+.arabic .circuit-viewport,.arabic .circuit-list,.arabic .circuit-set{direction:rtl}
+.arabic.circuit-ready .circuit-list{animation-name:circuit-marquee-rtl}
+@keyframes circuit-marquee-rtl{to{transform:translateX(50%)}}
+/* The first About panel occupies the right end of the desktop track. */
+@media(min-width:801px){.arabic .manifesto-track{direction:rtl}}
+.services-page.arabic :is(.services-hero h1,.pillar-title h2,.services-cta h2){line-height:1.3;letter-spacing:0}
+.services-page.arabic .index-links :is(strong,small){line-height:1.5}
+.services-page.arabic .pillar summary{letter-spacing:0;text-align:start}
+.services-page.arabic .pillar ul{padding-inline-start:0}
+@media(max-width:800px){
+ .arabic .circuit-fact{align-items:flex-start;text-align:start}
+ .arabic .circuit-fact-icon,.arabic .circuit-fact-copy{grid-column:auto;grid-row:auto}
+ .arabic .inside-cinema-copy h3{font-size:clamp(28px,9vw,48px);line-height:1.3}
+ .arabic .impact h2{font-size:clamp(30px,9vw,54px);line-height:1.3}
+ .arabic .inside h2,.arabic .join h2{font-size:clamp(34px,10vw,58px);line-height:1.3}
+ .arabic .circuit-rail-head h2{font-size:clamp(30px,9vw,48px)}
+ .arabic .circuit-modal-copy h2{font-size:clamp(27px,8vw,42px);overflow-wrap:normal}
+ .arabic .main-nav{text-align:start}
+ .services-page.arabic .index-links a,.services-page.arabic .index-links a+a{grid-template-columns:35px minmax(0,1fr);border-inline:0}
+ .services-page.arabic .pillar-title h2,.services-page.arabic .services-cta h2{font-size:clamp(32px,10vw,56px)}
+}

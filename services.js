@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   "05 / CREATE": "05 / إبداع",
   "Media, Intellectual Property & Experiences": "الإعلام والملكية الفكرية والتجارب",
   "FOR AUDIENCES": "للجمهور",
-  "BRANDS": "العلامات",
+  "BRANDS": "العلامات التجارية",
   "COMMUNITIES": "المجتمعات",
   "Explore 19 capabilities": "مجالات العمل · 19",
   "Before the Flag": "Before the Flag",
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   "We support drivers and teams with career planning, representation, team selection and race operations. Sporting commitments, contracts and commercial activity are coordinated around clear objectives.": "ندعم السائقين والفرق بتخطيط المسيرة الرياضية والتمثيل واختيار الفرق وعمليات السباقات، وننسّق المشاركات والعقود والأنشطة التجارية وفق أهداف واضحة.",
   "Keep career decisions, team operations and commercial commitments aligned.": "تنسيق قرارات المسيرة الرياضية وعمليات الفرق والالتزامات التجارية.",
   "Driver Placement with Teams": "تنسيق انضمام السائقين إلى الفرق",
-  "Driver–Team Matching": "مواءمة السائقين مع الفرق المناسبة",
+  "Driver and Team Matching": "مواءمة السائقين مع الفرق المناسبة",
   "Race Operations Support": "دعم عمليات السباقات",
   "We develop driver and team brands, sponsorship proposals and digital platforms. Each connects a clear identity with relevant audiences, defined partner rights and practical activation plans.": "نبني العلامات التجارية للسائقين والفرق، ونطوّر عروض الرعاية والمنصات الرقمية. ونربط الهوية بالجمهور المستهدف وحقوق الشركاء وخطط تفعيل الرعاية.",
   "Give partners a clear proposition, defined rights and a plan for delivery.": "تقديم عرض شراكة واضح وحقوق محددة وخطة تنفيذ.",
@@ -170,17 +170,17 @@ document.addEventListener('DOMContentLoaded',()=>{
   "LEXONZ / 02": "ليكسونز / 02",
   "FOUR PILLARS.": "أربع ركائز.",
   "ONE DRIVER ECOSYSTEM.": "منظومة متكاملة للسائق.",
-  "We do not sell disconnected services. We build the complete professional ecosystem around a driver—connecting racing resources, brand, commercial opportunity and long-term management.": "لا نقدّم خدمات منفصلة، بل نبني منظومة احترافية متكاملة حول السائق، تربط موارد السباق بالعلامة الشخصية والفرص التجارية والإدارة طويلة المدى.",
+  "We do not sell disconnected services. We build the complete professional ecosystem around a driver, connecting racing resources, brand, commercial opportunity and long-term management.": "لا نقدّم خدمات متفرقة؛ نبني حول السائق منظومة احترافية متكاملة تجمع دعم مشاركاته، وبناء هويته، وتنمية فرصه التجارية، وإدارة مسيرته على المدى الطويل.",
   "Explore the ecosystem": "اكتشف المنظومة",
   "THE LEXONZ DRIVER ECOSYSTEM": "منظومة ليكسونز للسائق",
-  "Four connected pillars surround the driver with what a professional racing career needs to perform, progress and remain sustainable.": "أربع ركائز مترابطة تمنح السائق ما تحتاجه المسيرة الاحترافية لتحقيق الأداء والتقدّم والاستدامة.",
+  "Four connected pillars surround the driver with what a professional racing career needs to perform, progress and remain sustainable.": "أربع ركائز مترابطة تضع حول السائق كل ما يحتاجه لتطوير أدائه، والتقدّم في مسيرته، والاستمرار في المنافسة.",
   "SUSTAIN": "استدامة",
   "Racing Sustainability": "استدامة المسيرة الرياضية",
-  "POSITION": "تموضع",
-  "Brand & Professional Positioning": "العلامة والتموضع الاحترافي",
+  "POSITION": "مكانة",
+  "Brand & Professional Positioning": "الهوية والمكانة الاحترافية",
   "GROW": "نمو",
-  "Commercial & Partnership Development": "التطوير التجاري وتطوير الشراكات",
-  "360° Strategy & Management": "الاستراتيجية والإدارة الشاملة 360°",
+  "Commercial & Partnership Development": "تنمية الفرص التجارية والشراكات",
+  "360° Strategy & Management": "الاستراتيجية والإدارة المتكاملة",
   "01 / SUSTAIN": "01 / استدامة",
   "RESOURCES / CONTINUITY": "الموارد / الاستمرارية",
   "FAMILIES": "العائلات",
@@ -196,43 +196,43 @@ document.addEventListener('DOMContentLoaded',()=>{
   "Technical & Equipment Partnerships": "شراكات التقنية والمعدات",
   "Team and Championship Cost Planning": "تخطيط تكاليف الفرق والبطولات",
   "Funding Gap Management": "إدارة فجوات التمويل",
-  "Long-Term Financial Roadmaps": "خرائط مالية طويلة المدى",
+  "Long-Term Financial Roadmaps": "خطط مالية طويلة المدى",
   "Saudi & International Opportunity Mapping": "رصد الفرص السعودية والدولية",
-  "02 / POSITION": "02 / تموضع",
+  "02 / POSITION": "02 / مكانة",
   "IDENTITY / CREDIBILITY": "الهوية / المصداقية",
   "MEDIA": "الإعلام",
   "MARKETS": "الأسواق",
-  "We turn a driver from a name on an entry list into a clear, credible professional proposition—one that teams, partners, media and audiences can understand and trust.": "نحوّل السائق من اسم في قائمة المشاركين إلى قيمة احترافية واضحة وموثوقة تستطيع الفرق والشركاء ووسائل الإعلام والجماهير فهمها والثقة بها.",
+  "We turn a driver from a name on an entry list into a clear, credible professional proposition that teams, partners, media and audiences can understand and trust.": "نبني للسائق هوية تتجاوز اسمه في قائمة المشاركين؛ هوية تبرز قدراته وطموحه وتمنحه حضوراً موثوقاً لدى الفرق والشركاء والإعلام والجمهور.",
   "A distinctive identity and professional presence that reflects the driver’s ambition and value.": "هوية مميزة وحضور احترافي يعكسان طموح السائق وقيمته.",
-  "Positioning & Core Narrative": "التموضع والسردية الأساسية",
+  "Positioning & Core Narrative": "تحديد المكانة وصياغة القصة الشخصية",
   "Visual Identity": "الهوية البصرية",
   "Professional Driver Profile": "الملف الاحترافي للسائق",
-  "Media Kit & Biography": "الحقيبة الإعلامية والسيرة",
+  "Media Kit & Biography": "الملف الإعلامي والسيرة الذاتية",
   "Website & Digital Presence": "الموقع والحضور الرقمي",
-  "Social Media Direction": "توجيه وسائل التواصل الاجتماعي",
+  "Social Media Direction": "تحديد توجه الحضور على منصات التواصل",
   "Content Strategy": "استراتيجية المحتوى",
-  "PR & Media Positioning": "العلاقات العامة والتموضع الإعلامي",
+  "PR & Media Positioning": "العلاقات العامة وبناء الحضور الإعلامي",
   "Media Training & Public Presence": "التدريب الإعلامي والحضور العام",
   "03 / GROW": "03 / نمو",
   "VALUE / OPPORTUNITY": "القيمة / الفرصة",
   "FOR SPONSORS": "للرعاة",
   "INVESTORS": "المستثمرون",
-  "We translate the driver’s story, reach and sporting programme into a compelling commercial platform, then connect it with sponsors, investors, brands and strategic partners.": "نحوّل قصة السائق وانتشاره وبرنامجه الرياضي إلى منصة تجارية جاذبة، ثم نربطها بالرعاة والمستثمرين والعلامات والشركاء الاستراتيجيين.",
-  "Stronger commercial assets, better conversations and partnerships built to create measurable value.": "أصول تجارية أقوى وحوارات أفضل وشراكات مصممة لصناعة قيمة قابلة للقياس.",
+  "We translate the driver’s story, reach and sporting programme into a compelling commercial platform, then connect it with sponsors, investors, brands and strategic partners.": "نحوّل قصة السائق وحضوره وبرنامجه الرياضي إلى فرص تجارية جاذبة، ونفتح له أبواب التعاون مع الرعاة والمستثمرين والعلامات التجارية والشركاء الاستراتيجيين.",
+  "Stronger commercial assets, better conversations and partnerships built to create measurable value.": "مواد وعروض تجارية أكثر إقناعاً، وفرص تفاوض أفضل، وشراكات تحقق قيمة قابلة للقياس.",
   "Commercial Proposition Development": "تطوير العرض التجاري",
-  "Sponsorship Decks & Partner Assets": "عروض الرعاية وأصول الشركاء",
+  "Sponsorship Decks & Partner Assets": "عروض الرعاية والمواد التعريفية للشركاء",
   "Rights & Benefits Architecture": "هيكلة الحقوق والمزايا",
   "Sponsor and Investor Mapping": "رصد الرعاة والمستثمرين",
   "Partner Outreach & Introductions": "التواصل مع الشركاء وتقديم الفرص",
   "Pitch Strategy & Negotiation Support": "استراتيجية العرض ودعم التفاوض",
   "Brand Partnerships": "شراكات العلامات التجارية",
-  "Endorsement Opportunities": "فرص الترويج والتأييد",
-  "Activation Planning": "تخطيط التفعيل",
+  "Endorsement Opportunities": "فرص تمثيل العلامات التجارية والترويج لها",
+  "Activation Planning": "تخطيط أنشطة تفعيل الرعاية",
   "Partner Servicing & Reporting": "خدمة الشركاء وإعداد التقارير",
   "04 / MANAGE": "04 / إدارة",
   "STRATEGY / CONTROL": "الاستراتيجية / الإدارة",
   "PARTNERS": "الشركاء",
-  "We bring brand, marketing, PR, content, commercial activity and long-term career strategy under one clear management structure—so every decision supports the same direction.": "نجمع العلامة والتسويق والعلاقات العامة والمحتوى والنشاط التجاري واستراتيجية المسيرة طويلة المدى تحت هيكل إداري واضح، لتدعم جميع القرارات اتجاهاً واحداً.",
+  "We bring brand, marketing, PR, content, commercial activity and long-term career strategy under one clear management structure so every decision supports the same direction.": "نجمع العلامة والتسويق والعلاقات العامة والمحتوى والنشاط التجاري واستراتيجية المسيرة طويلة المدى تحت هيكل إداري واضح، لتدعم جميع القرارات اتجاهاً واحداً.",
   "One accountable team, one coordinated plan and a professional ecosystem built around the driver.": "فريق واحد مسؤول، وخطة منسقة واحدة، ومنظومة احترافية مبنية حول السائق.",
   "Long-Term Career Strategy": "استراتيجية المسيرة طويلة المدى",
   "Team Selection & Relationships": "اختيار الفرق وإدارة العلاقات",
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   "Integrated Brand and Marketing Planning": "التخطيط المتكامل للعلامة والتسويق",
   "PR & Communications Management": "إدارة العلاقات العامة والاتصال",
   "Content Planning & Production Oversight": "تخطيط المحتوى والإشراف على الإنتاج",
-  "Stakeholder Coordination": "تنسيق أصحاب المصلحة",
+  "Stakeholder Coordination": "تنسيق العمل بين الأطراف المعنية",
   "Performance Reviews & Strategic Reporting": "مراجعات الأداء والتقارير الاستراتيجية",
   "FOUR PILLARS. ONE PROFESSIONAL ECOSYSTEM.": "أربع ركائز. منظومة احترافية واحدة.",
   "BUILD WHAT": "نبني ما",
@@ -248,14 +248,14 @@ document.addEventListener('DOMContentLoaded',()=>{
   "Build your ecosystem": "ابنِ منظومتك"
 };
  const textNodes=[];const walker=document.createTreeWalker(body,NodeFilter.SHOW_TEXT);let textNode;while(textNode=walker.nextNode()){if(textNode.nodeValue.trim())textNodes.push({node:textNode,en:textNode.nodeValue.trim()})}
- const setLanguage=lang=>{const isArabic=lang==='ar';root.lang=lang;root.dir=isArabic?'rtl':'ltr';body.classList.toggle('arabic',isArabic);textNodes.forEach(({node,en})=>{const translated=isArabic&&ar[en]?ar[en]:en;node.nodeValue=node.nodeValue.replace(node.nodeValue.trim(),translated)});langToggle.textContent=isArabic?'EN':'عربي';langToggle.setAttribute('aria-label',isArabic?'Switch to English':'التبديل إلى العربية');
+ const setLanguage=lang=>{const isArabic=lang==='ar';root.lang=lang;root.dir=isArabic?'rtl':'ltr';body.classList.toggle('arabic',isArabic);textNodes.forEach(({node,en})=>{const translated=isArabic&&ar[en]?ar[en]:en;node.nodeValue=node.nodeValue.replace(node.nodeValue.trim(),translated)});langToggle.setAttribute('aria-label',isArabic?'Switch to English':'التبديل إلى العربية');langToggle.title=isArabic?'Switch to English':'التبديل إلى العربية';
  document.title=lang==='ar'?"خدمات رياضة المحركات | ليكسونز":"Motorsport Services | LEXONZ";
- document.querySelector('meta[name="description"]').content=lang==='ar'?"تبني ليكسونز المنظومة الاحترافية حول سائق السباقات عبر أربع ركائز مترابطة: الاستدامة والتموضع والتطوير التجاري والإدارة الشاملة.":"LEXONZ builds the professional ecosystem around a racing driver through four connected pillars: sustainability, positioning, commercial development and 360° management.";
+ document.querySelector('meta[name="description"]').content=lang==='ar'?"تبني ليكسونز المنظومة الاحترافية حول سائق السباقات عبر أربع ركائز مترابطة: الاستدامة والمكانة الاحترافية والتطوير التجاري والإدارة الشاملة.":"LEXONZ builds the professional ecosystem around a racing driver through four connected pillars: sustainability, positioning, commercial development and 360° management.";
  nav.setAttribute('aria-label',lang==='ar'?'التنقل الرئيسي':'Main navigation');
- document.querySelector('.brand').setAttribute('aria-label',lang==='ar'?'ليكسونز — الصفحة الرئيسية':'LEXONZ home');
+ document.querySelector('.brand').setAttribute('aria-label',lang==='ar'?'ليكسونز، الصفحة الرئيسية':'LEXONZ home');
  const menuOpen=menu.getAttribute('aria-expanded')==='true';
  menu.setAttribute('aria-label',lang==='ar'?(menuOpen?'إغلاق القائمة':'فتح القائمة'):(menuOpen?'Close menu':'Open menu'));
- localStorage.setItem('lexonz-language',lang);window.ScrollTrigger?.refresh()};
+ window.lexonzLocalize(lang);localStorage.setItem('lexonz-language',lang);window.ScrollTrigger?.refresh()};
  const setMenu=open=>{nav.classList.toggle('open',open);menu.classList.toggle('active',open);body.classList.toggle('menu-open',open);menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',root.lang==='ar'?(open?'إغلاق القائمة':'فتح القائمة'):(open?'Close menu':'Open menu'))};
  menu.addEventListener('click',()=>setMenu(!nav.classList.contains('open')));document.addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
  langToggle.addEventListener('click',()=>setLanguage(root.lang==='ar'?'en':'ar'));setLanguage(localStorage.getItem('lexonz-language')||'en');
@@ -268,5 +268,9 @@ document.addEventListener('DOMContentLoaded',()=>{
  if(!window.gsap){document.querySelector('.loader')?.remove();return}gsap.registerPlugin(ScrollTrigger);const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
  gsap.timeline({onComplete:()=>document.querySelector('.loader')?.remove()}).to('.loader span',{width:190,duration:.55,ease:'power2.inOut'}).to('.loader img,.loader small',{opacity:0,y:-8,duration:.25}).to('.loader',{yPercent:-100,duration:.7,ease:'power4.inOut'}).from('.service-reveal',{y:45,opacity:0,duration:.8,stagger:.12,ease:'power3.out'},'-=.2');
  if(!reduce){gsap.to('.services-grid',{yPercent:12,ease:'none',scrollTrigger:{trigger:'.services-hero',start:'top top',end:'bottom top',scrub:true}});gsap.to('.services-visual-main img',{yPercent:-8,scale:1.04,ease:'none',scrollTrigger:{trigger:'.services-hero',start:'top top',end:'bottom top',scrub:true}});gsap.from('.services-visual-detail',{x:70,opacity:0,duration:1,ease:'power3.out',delay:1.25});gsap.utils.toArray('.pillar').forEach(pillar=>gsap.from(pillar.querySelectorAll('.pillar-title > *, .pillar-content > *'),{y:45,opacity:0,stagger:.08,duration:.75,ease:'power3.out',scrollTrigger:{trigger:pillar,start:'top 72%'}}))}
- const cursor=document.querySelector('.cursor');addEventListener('pointermove',e=>gsap.to(cursor,{x:e.clientX,y:e.clientY,duration:.18}));document.querySelectorAll('a,button,summary').forEach(el=>{el.addEventListener('mouseenter',()=>gsap.to(cursor,{scale:3,duration:.2}));el.addEventListener('mouseleave',()=>gsap.to(cursor,{scale:1,duration:.2}))});
+ gsap.matchMedia().add('(min-width: 801px) and (pointer: fine) and (prefers-reduced-motion: no-preference)',()=>{
+  const cursor=document.querySelector('.cursor'),move=e=>gsap.to(cursor,{x:e.clientX,y:e.clientY,duration:.18,overwrite:true}),enter=()=>gsap.to(cursor,{scale:3,duration:.2,overwrite:'auto'}),leave=()=>gsap.to(cursor,{scale:1,duration:.2,overwrite:'auto'}),links=document.querySelectorAll('a,button,summary');
+  document.body.classList.add('dot-cursor');addEventListener('pointermove',move);links.forEach(el=>{el.addEventListener('mouseenter',enter);el.addEventListener('mouseleave',leave)});
+  return ()=>{document.body.classList.remove('dot-cursor');removeEventListener('pointermove',move);links.forEach(el=>{el.removeEventListener('mouseenter',enter);el.removeEventListener('mouseleave',leave)});gsap.killTweensOf(cursor)};
+ });
 });
