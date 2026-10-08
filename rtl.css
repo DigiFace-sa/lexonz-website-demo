@@ -12,7 +12,7 @@
 .arabic .circuit-fact-copy strong{line-height:1.5}
 .arabic .join-visual span{left:auto;right:24px}
 .arabic :is(.button,.text-link,.nav-cta,.gallery-foot a,.final-cta a)>i:not(.ui-arrow-up){transform:scaleX(-1)}
-.arabic .circuit-card:after{content:'↖'}
+.arabic .circuit-card:after{content:'';transform:scaleX(-1)}
 .arabic :is(.footer-contact a,.footer-bottom>span:first-child,.inside-cinema-counter){direction:ltr;unicode-bidi:isolate}
 .arabic .footer-contact a{align-self:flex-start}
 .arabic .inside-cinema-controls{direction:ltr}

@@ -236,7 +236,7 @@ footer{background:#0a0a0a}.footer-top{align-items:flex-start}.footer-top p{max-w
 .circuit-list{display:flex;width:max-content;margin:0;padding:0;will-change:transform}.circuit-ready .circuit-list{animation:circuit-marquee 46s linear infinite}.circuit-viewport:hover .circuit-list,.circuit-viewport:focus-within .circuit-list,.circuit-modal-open .circuit-list{animation-play-state:paused}
 .circuit-set{display:flex;align-items:stretch;gap:24px;padding:0 24px 0 0}
 .circuit-card{position:relative;display:grid;grid-template-columns:126px 1fr;align-items:center;align-self:stretch;flex:0 0 390px;gap:28px;width:390px;height:220px;min-height:220px;max-height:220px;margin:0;padding:28px;border:1px solid rgba(255,255,255,.16);border-radius:2px;background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,255,255,.035));box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 24px 70px rgba(0,0,0,.2);color:#fff;font:inherit;text-align:left;cursor:pointer;overflow:hidden;backdrop-filter:blur(20px) saturate(1.12);-webkit-backdrop-filter:blur(20px) saturate(1.12);transition:transform .45s cubic-bezier(.2,.8,.2,1),border-color .35s,background .35s}
-.circuit-card:before{content:'';position:absolute;right:-34px;bottom:-60px;width:160px;height:160px;border:1px solid rgba(7,245,237,.12);border-radius:50%;transition:transform .55s,border-color .35s}.circuit-card:after{content:'↗';position:absolute;top:24px;right:25px;color:var(--accent);font-size:16px;transition:transform .35s}
+.circuit-card:before{content:'';position:absolute;right:-34px;bottom:-60px;width:160px;height:160px;border:1px solid rgba(7,245,237,.12);border-radius:50%;transition:transform .55s,border-color .35s}.circuit-card:after{content:'';position:absolute;top:24px;right:25px;color:var(--accent);font-size:16px;transition:transform .35s}
 .circuit-card:hover,.circuit-card:focus-visible{z-index:2;transform:translateY(-7px);border-color:rgba(7,245,237,.68);background:linear-gradient(135deg,rgba(7,245,237,.16),rgba(255,255,255,.045));outline:none}.circuit-card:hover:before,.circuit-card:focus-visible:before{transform:scale(1.22);border-color:rgba(7,245,237,.25)}.circuit-card:hover:after,.circuit-card:focus-visible:after{transform:translate(3px,-3px)}
 .circuit-card .circuit-mark{grid-row:auto;width:126px;height:126px;flex:none;border-color:rgba(255,255,255,.22);background:rgba(13,13,13,.42);box-shadow:inset 0 0 0 8px rgba(13,13,13,.42),0 0 42px rgba(7,245,237,.08)}
 .circuit-card .circuit-mark:before{border-color:rgba(255,255,255,.9);border-width:2px}.circuit-card .circuit-mark:after{background:var(--accent);box-shadow:12px 0 0 var(--accent)}
@@ -547,6 +547,11 @@ body{width:100%;max-width:100%;overflow-x:clip}
 .circuit-card{background-size:cover;background-position:center}
 /* Keep the custom pointer above story dialogs and their blurred backdrops. */
 .cursor{z-index:1000}
+
+/* Vector arrows never use platform emoji glyphs, including iOS Safari. */
+i[class^="ui-arrow-"]{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:1em;height:1em}
+i[class^="ui-arrow-"] svg{display:block;width:100%;height:100%;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.circuit-card:after{width:18px;height:18px;background:var(--accent);mask:url('public/media/icons/arrow-up-right.svg') center/contain no-repeat;-webkit-mask:url('public/media/icons/arrow-up-right.svg') center/contain no-repeat}
 
 /* Contain animated markers while preserving readable copy at tablet sizes. */
 .stage-line{overflow:clip}
