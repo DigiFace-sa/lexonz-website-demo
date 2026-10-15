@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  const circuitMedia={
   'Snetterton 300':[
    {src:'public/media/editorial/snetterton-race.jpg',en:'LEXONZ / SNETTERTON ON TRACK',ar:'ليكسونز / على مسار سنيترتون'},
-   {src:'public/media/editorial/snetterton-detail.jpg',en:'LEXONZ / THE DETAILS BEHIND THE DRIVE',ar:'ليكسونز / التفاصيل خلف الأداء'}
+   {src:'public/media/editorial/snetterton-detail.jpg',en:'LEXONZ / THE DETAILS BEHIND THE DRIVE',ar:'ليكسونز / تفاصيل تصنع الأداء'}
   ],
   'Autodromo Riccardo Paletti':[{src:'public/media/circuits/photos/varano-aerial.jpg',en:'VARANO / THE CIRCUIT FROM ABOVE',ar:'فارانو / الحلبة من الأعلى'}],
   'Tazio Nuvolari · Cervesina':[{src:'public/media/circuits/photos/cervesina-aerial.png',en:'CERVESINA / THE CIRCUIT FROM ABOVE',ar:'تشيرفيزينا / الحلبة من الأعلى'}],
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   'Silverstone Grand Prix':[
    {src:'public/media/editorial/silverstone-race.jpg',en:'LEXONZ / SILVERSTONE RACE PACE',ar:'ليكسونز / على مسار سيلفرستون'},
    {src:'public/media/editorial/silverstone-preparation.jpg',en:'LEXONZ / DRIVER PREPARATION',ar:'ليكسونز / استعداد السائق'},
-   {src:'public/media/editorial/silverstone-portrait.jpg',en:'LEXONZ / BEHIND THE VISOR',ar:'ليكسونز / خلف الخوذة'}
+   {src:'public/media/editorial/silverstone-portrait.jpg',en:'LEXONZ / BEHIND THE VISOR',ar:'ليكسونز / خلف واقي الخوذة'}
   ],
   'Donington Park Grand Prix':[
    {src:'public/media/editorial/donington-race.jpg',en:'LEXONZ / DONINGTON ON TRACK',ar:'ليكسونز / على مسار دونينغتون'},
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  };
  const circuitSlides=card=>[
   ...(circuitMedia[card.dataset.circuit]||(card.dataset.layoutImage==='true'?[]:[{src:card.dataset.image,en:'LEXONZ / ON TRACK',ar:'ليكسونز / على الحلبة'}])),
-  {src:card.dataset.layoutSrc,en:'CIRCUIT LAYOUT / REFERENCE',ar:'مخطط الحلبة / مرجع بصري',layout:true}
+  {src:card.dataset.layoutSrc,en:'CIRCUIT LAYOUT / REFERENCE',ar:'مخطط الحلبة / للاطّلاع',layout:true}
  ];
  if(circuitList&&circuitSet){
   circuitSet.querySelectorAll('.circuit-card').forEach(card=>{const photo=circuitMedia[card.dataset.circuit]?.[0];if(photo)card.style.backgroundImage=`linear-gradient(90deg,rgba(11,16,17,.82),rgba(11,16,17,.48)),url("${photo.src}")`});
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   const slides=[...insideSlider.querySelectorAll('.inside-slide')],thumbs=[...insideSlider.querySelectorAll('[data-cinema-go]')],stage=insideSlider.querySelector('.inside-cinema-stage'),filmstrip=insideSlider.querySelector('.inside-cinema-filmstrip'),copyBlock=insideSlider.querySelector('.inside-cinema-copy'),title=insideSlider.querySelector('[data-cinema-title]'),copy=insideSlider.querySelector('[data-cinema-copy]'),currentLabel=insideSlider.querySelector('[data-cinema-current]'),countLabel=insideSlider.querySelector('[data-cinema-count]'),progress=insideSlider.querySelector('.cinema-progress i'),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   let current=0,timer=null,touchStartX=0,transitioning=false;
   const two=n=>String(n+1).padStart(2,'0');
-  const localizeControls=()=>{const ar=root.lang==='ar';insideSlider.setAttribute('aria-label',ar?'رحلة سائق ليكسونز':'Lexonz driver journey');filmstrip.setAttribute('aria-label',ar?'اختر قصة من الحلبة':'Choose a paddock story');insideSlider.querySelector('[data-cinema-prev]').setAttribute('aria-label',ar?'القصة السابقة':'Previous story');insideSlider.querySelector('[data-cinema-next]').setAttribute('aria-label',ar?'القصة التالية':'Next story')};
+  const localizeControls=()=>{const ar=root.lang==='ar';insideSlider.setAttribute('aria-label',ar?'رحلة سائق ليكسونز':'Lexonz driver journey');filmstrip.setAttribute('aria-label',ar?'اختر من كواليس السباق':'Choose a paddock story');insideSlider.querySelector('[data-cinema-prev]').setAttribute('aria-label',ar?'القصة السابقة':'Previous story');insideSlider.querySelector('[data-cinema-next]').setAttribute('aria-label',ar?'القصة التالية':'Next story')};
   const renderCopy=()=>{const lang=root.lang==='ar'?'Ar':'En',slide=slides[current];title.textContent=slide.dataset[`title${lang}`];copy.textContent=slide.dataset[`copy${lang}`];currentLabel.textContent=countLabel.textContent=two(current);localizeControls()};
   const resetProgress=()=>{progress.style.animation='none';progress.offsetWidth;progress.style.animation=''};
   const schedule=()=>{clearTimeout(timer);if(document.hidden)return;resetProgress();timer=setTimeout(()=>goTo((current+1)%slides.length,1,false),3500)};
