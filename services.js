@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   "Services": "خدماتنا",
   "Our approach": "منهجنا",
   "Field notes": "من الميدان",
+  "Gallery": "معرض الصور والفيديو",
   "MOTORSPORT INVESTMENT & REPRESENTATION": "الاستثمار والتمثيل في رياضة المحركات",
   "ONE ECOSYSTEM.": "منظومة واحدة.",
   "LEXONZ / ON TRACK": "ليكسونز / على الحلبة",
@@ -267,7 +268,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  const progressObserver=new IntersectionObserver(([entry])=>progress?.classList.toggle('visible',entry.isIntersecting),{threshold:.01});progressObserver.observe(document.querySelector('.pillars'));
  if(!window.gsap){document.querySelector('.loader')?.remove();return}gsap.registerPlugin(ScrollTrigger);const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
  gsap.timeline({onComplete:()=>document.querySelector('.loader')?.remove()}).to('.loader span',{width:190,duration:.55,ease:'power2.inOut'}).to('.loader img,.loader small',{opacity:0,y:-8,duration:.25}).to('.loader',{yPercent:-100,duration:.7,ease:'power4.inOut'}).from('.service-reveal',{y:45,opacity:0,duration:.8,stagger:.12,ease:'power3.out'},'-=.2');
- if(!reduce){gsap.to('.services-grid',{yPercent:12,ease:'none',scrollTrigger:{trigger:'.services-hero',start:'top top',end:'bottom top',scrub:true}});gsap.to('.services-visual-main img',{yPercent:-8,scale:1.04,ease:'none',scrollTrigger:{trigger:'.services-hero',start:'top top',end:'bottom top',scrub:true}});gsap.from('.services-visual-detail',{x:70,opacity:0,duration:1,ease:'power3.out',delay:1.25});gsap.utils.toArray('.pillar').forEach(pillar=>gsap.from(pillar.querySelectorAll('.pillar-title > *, .pillar-content > *'),{y:45,opacity:0,stagger:.08,duration:.75,ease:'power3.out',scrollTrigger:{trigger:pillar,start:'top 72%'}}))}
+ if(!reduce){gsap.to('.services-grid',{yPercent:12,ease:'none',scrollTrigger:{trigger:'.services-hero',start:'top top',end:'bottom top',scrub:true}});gsap.to('.services-visual-main img,.services-visual-main video',{yPercent:-8,scale:1.04,ease:'none',scrollTrigger:{trigger:'.services-hero',start:'top top',end:'bottom top',scrub:true}});gsap.from('.services-visual-detail',{x:70,opacity:0,duration:1,ease:'power3.out',delay:1.25});gsap.utils.toArray('.pillar').forEach(pillar=>gsap.from(pillar.querySelectorAll('.pillar-title > *, .pillar-content > *'),{y:45,opacity:0,stagger:.08,duration:.75,ease:'power3.out',scrollTrigger:{trigger:pillar,start:'top 72%'}}))}
  gsap.matchMedia().add('(min-width: 801px) and (pointer: fine) and (prefers-reduced-motion: no-preference)',()=>{
   const cursor=document.querySelector('.cursor'),move=e=>gsap.to(cursor,{x:e.clientX,y:e.clientY,duration:.18,overwrite:true}),enter=()=>gsap.to(cursor,{scale:3,duration:.2,overwrite:'auto'}),leave=()=>gsap.to(cursor,{scale:1,duration:.2,overwrite:'auto'}),links=document.querySelectorAll('a,button,summary');
   document.body.classList.add('dot-cursor');addEventListener('pointermove',move);links.forEach(el=>{el.addEventListener('mouseenter',enter);el.addEventListener('mouseleave',leave)});

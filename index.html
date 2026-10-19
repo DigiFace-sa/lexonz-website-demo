@@ -13,16 +13,17 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="main.css?v=20261015-stage-number">
+    <link rel="stylesheet" href="main.css?v=20261019-mobile-nav">
     <link rel="stylesheet" href="rtl.css?v=20261015-hero-spacing">
+    <link rel="stylesheet" href="media-motion.css?v=20261015-library">
 </head>
 
 <body>
     <div class="loader" aria-hidden="true"><img src="public/media/lexonz-black.png" alt=""><span></span><small data-en="BUILT FOR MOTORSPORT" data-ar="متخصّصون في رياضة المحركات">BUILT FOR MOTORSPORT</small></div>
     <div class="cursor" aria-hidden="true"></div>
     <header class="site-header" id="top"><a class="brand" href="#top" aria-label="Lexonz home"><img src="public/media/lexonz-black.png" alt="Lexonz"></a>
-        <nav class="main-nav" aria-label="Main navigation"><a href="#about" data-en="About" data-ar="من نحن">About</a><a href="services.html" data-en="Services" data-ar="خدماتنا">Services</a><a
-                href="#pathway" data-en="Our approach" data-ar="منهجنا">Our approach</a><a href="#inside" data-en="Field notes" data-ar="من الميدان">Field notes</a><a href="#join"
+        <nav data-lenis-prevent class="main-nav" aria-label="Main navigation"><a href="#about" data-en="About" data-ar="من نحن">About</a><a href="services.html" data-en="Services" data-ar="خدماتنا">Services</a><a
+                href="#pathway" data-en="Our approach" data-ar="منهجنا">Our approach</a><a href="#inside" data-en="Field notes" data-ar="من الميدان">Field notes</a><a href="gallery.html" data-en="Gallery" data-ar="معرض الصور والفيديو">Gallery</a><a href="#join"
                 data-en="Contact" data-ar="تواصل معنا">Contact</a></nav>
         <div class="header-actions"><button class="lang-switch" type="button" data-lang-toggle
                 aria-label="Switch to Arabic" title="Switch to Arabic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.4 4 5.4 4 9s-1.3 6.6-4 9c-2.7-2.4-4-5.4-4-9s1.3-6.6 4-9Z"/></svg></button><a class="nav-cta" href="#join"><span data-en="Work with LEXONZ" data-ar="تعاون مع ليكسونز">Work with LEXONZ</span><i class="ui-arrow-diagonal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></i></a><button class="menu-toggle"
@@ -30,7 +31,7 @@
     </header>
     <main>
         <section class="hero" aria-labelledby="hero-title">
-            <div class="hero-media"></div>
+            <div class="hero-media"><video data-preview data-src="public/media/library/lexonz-560.mp4" poster="public/media/library/lexonz-560-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
             <div class="hero-overlay"></div>
             <div class="speed-lines"></div><div class="hero-frame" aria-hidden="true"></div>
             <div class="hero-copy wrap">
@@ -154,7 +155,7 @@
                         <a class="text-link" href="services.html"><span data-en="Explore our services" data-ar="اكتشف خدماتنا">Explore our services</span><i class="ui-arrow-diagonal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></i></a>
                     </div>
                 </div>
-                <div class="manifesto-panel panel-image"><img src="public/media/editorial/gb4-technical.jpg"
+                <div class="manifesto-panel panel-image"><img src="public/media/library/lexonz-094.jpg"
                         alt="Lexonz team preparing a race car">
                     <div class="image-tag"><span data-en="PREPARATION IN THE GARAGE" data-ar="الإعداد داخل المرآب">PREPARATION IN THE GARAGE</span></div>
                 </div>
@@ -204,11 +205,11 @@
             <div class="inside-cinema" data-inside-slider aria-roledescription="carousel" aria-label="Lexonz driver journey">
                 <div class="inside-cinema-stage" tabindex="0">
                     <div class="inside-cinema-frames">
-                        <figure class="inside-slide is-active" data-title-en="THE TALENT" data-title-ar="الموهبة" data-copy-en="Focus before the track" data-copy-ar="التركيز يبدأ قبل الانطلاق" aria-hidden="false"><img src="public/media/editorial/gb4-driver.jpg" alt="Driver preparing in the garage"></figure>
-                        <figure class="inside-slide" data-title-en="THE PREPARATION" data-title-ar="الإعداد" data-copy-en="Every detail has a purpose" data-copy-ar="لكل تفصيل هدف" aria-hidden="true"><img src="public/media/editorial/gb4-technical.jpg" alt="Technical preparation around a race car" loading="lazy"></figure>
-                        <figure class="inside-slide" data-title-en="THE TEAM" data-title-ar="الفريق" data-copy-en="Progress is never individual" data-copy-ar="التقدّم لا يصنعه فرد واحد" aria-hidden="true"><img src="public/media/editorial/gb4-engineering.jpg" alt="Race engineer working with the team" loading="lazy"></figure>
+                        <figure class="inside-slide is-active" data-title-en="THE TALENT" data-title-ar="الموهبة" data-copy-en="Focus before the track" data-copy-ar="التركيز يبدأ قبل الانطلاق" aria-hidden="false"><img src="public/media/library/lexonz-100.jpg" alt="Driver preparing in the garage"></figure>
+                        <figure class="inside-slide" data-title-en="THE PREPARATION" data-title-ar="الإعداد" data-copy-en="Every detail has a purpose" data-copy-ar="لكل تفصيل هدف" aria-hidden="true"><img src="public/media/library/lexonz-094.jpg" alt="Technical preparation around a race car" loading="lazy"></figure>
+                        <figure class="inside-slide" data-title-en="THE TEAM" data-title-ar="الفريق" data-copy-en="Progress is never individual" data-copy-ar="التقدّم لا يصنعه فرد واحد" aria-hidden="true"><img src="public/media/library/lexonz-115.jpg" alt="Race engineer working with the team" loading="lazy"></figure>
                         <figure class="inside-slide" data-title-en="THE PERFORMANCE" data-title-ar="الأداء" data-copy-en="Strategy becomes movement" data-copy-ar="حين تتحول الخطة إلى أداء" aria-hidden="true"><img src="public/media/editorial/silverstone-race.jpg" alt="Lexonz race car on track at Silverstone" loading="lazy"></figure>
-                        <figure class="inside-slide" data-title-en="THE NEXT MOVE" data-title-ar="الخطوة التالية" data-copy-en="Opportunity, professionally directed" data-copy-ar="فرصة تُدار باحترافية" aria-hidden="true"><img src="public/media/editorial/gb4-next-move.jpg" alt="Driver walking toward the paddock light" loading="lazy"></figure>
+                        <figure class="inside-slide" data-title-en="THE NEXT MOVE" data-title-ar="الخطوة التالية" data-copy-en="Opportunity, professionally directed" data-copy-ar="فرصة تُدار باحترافية" aria-hidden="true"><img src="public/media/library/lexonz-052.jpg" alt="Driver walking toward the paddock light" loading="lazy"></figure>
                     </div>
                     <div class="inside-cinema-shade" aria-hidden="true"></div>
                     <div class="inside-cinema-copy" aria-live="polite" aria-atomic="true">
@@ -224,14 +225,24 @@
                     </div>
                 </div>
                 <div class="inside-cinema-filmstrip" role="tablist" aria-label="Choose a paddock story">
-                    <button class="cinema-thumb is-active" type="button" role="tab" aria-selected="true" data-cinema-go="0"><img src="public/media/editorial/gb4-driver.jpg" alt=""><span><small>01</small><strong data-en="Talent" data-ar="الموهبة">Talent</strong></span></button>
-                    <button class="cinema-thumb" type="button" role="tab" aria-selected="false" data-cinema-go="1"><img src="public/media/editorial/gb4-technical.jpg" alt="" loading="lazy"><span><small>02</small><strong data-en="Preparation" data-ar="الإعداد">Preparation</strong></span></button>
-                    <button class="cinema-thumb" type="button" role="tab" aria-selected="false" data-cinema-go="2"><img src="public/media/editorial/gb4-engineering.jpg" alt="" loading="lazy"><span><small>03</small><strong data-en="Team" data-ar="الفريق">Team</strong></span></button>
+                    <button class="cinema-thumb is-active" type="button" role="tab" aria-selected="true" data-cinema-go="0"><img src="public/media/library/lexonz-100.jpg" alt=""><span><small>01</small><strong data-en="Talent" data-ar="الموهبة">Talent</strong></span></button>
+                    <button class="cinema-thumb" type="button" role="tab" aria-selected="false" data-cinema-go="1"><img src="public/media/library/lexonz-094.jpg" alt="" loading="lazy"><span><small>02</small><strong data-en="Preparation" data-ar="الإعداد">Preparation</strong></span></button>
+                    <button class="cinema-thumb" type="button" role="tab" aria-selected="false" data-cinema-go="2"><img src="public/media/library/lexonz-115.jpg" alt="" loading="lazy"><span><small>03</small><strong data-en="Team" data-ar="الفريق">Team</strong></span></button>
                     <button class="cinema-thumb" type="button" role="tab" aria-selected="false" data-cinema-go="3"><img src="public/media/editorial/silverstone-race.jpg" alt="" loading="lazy"><span><small>04</small><strong data-en="Performance" data-ar="الأداء">Performance</strong></span></button>
-                    <button class="cinema-thumb" type="button" role="tab" aria-selected="false" data-cinema-go="4"><img src="public/media/editorial/gb4-next-move.jpg" alt="" loading="lazy"><span><small>05</small><strong data-en="Next move" data-ar="الخطوة التالية">Next move</strong></span></button>
+                    <button class="cinema-thumb" type="button" role="tab" aria-selected="false" data-cinema-go="4"><img src="public/media/library/lexonz-052.jpg" alt="" loading="lazy"><span><small>05</small><strong data-en="Next move" data-ar="الخطوة التالية">Next move</strong></span></button>
                 </div>
             </div>
             <div class="wrap gallery-foot"><span data-en="LEXONZ / ON TRACK" data-ar="ليكسونز / على الحلبة">LEXONZ / ON TRACK</span><a href="services.html"><span data-en="Explore our services" data-ar="اكتشف خدماتنا">Explore our services</span> <i class="ui-arrow-diagonal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></i></a></div>
+        </section>
+        <section class="gallery-preview" aria-labelledby="gallery-preview-title">
+            <div class="wrap">
+                <div class="gallery-preview-head"><div><p class="micro"><b></b><span data-en="GALLERY / PHOTO & FILM" data-ar="المعرض / صور وفيديو">GALLERY / PHOTO & FILM</span></p><h2 id="gallery-preview-title" data-en="MOMENTS IN MOTION." data-ar="لحظات تنبض بالحياة.">MOMENTS IN MOTION.</h2><p data-en="From the racing line to the work behind it. Explore our photographs and films." data-ar="من المنافسة على الحلبة إلى العمل خلف الكواليس، اكتشف رحلتنا بالصور والفيديو.">From the racing line to the work behind it. Explore our photographs and films.</p></div><a class="text-link" href="gallery.html"><span data-en="Explore the gallery" data-ar="اكتشف المعرض">Explore the gallery</span><i class="ui-arrow-diagonal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14"/></svg></i></a></div>
+                <div class="gallery-preview-strip">
+                    <a class="gallery-preview-card" href="gallery.html?type=video&amp;item=lexonz-560"><video data-preview data-src="public/media/library/lexonz-560.mp4" poster="public/media/library/lexonz-560-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span><span data-en="On the racing line" data-ar="على خط التسابق">On the racing line</span><span class="preview-live" data-en="WATCH FILM" data-ar="شاهد الفيديو">WATCH FILM</span></span></a>
+                    <a class="gallery-preview-card" href="gallery.html?type=photo&amp;item=lexonz-100"><img src="public/media/library/lexonz-100-thumb.jpg" alt="Lexonz driver preparing in racing overalls" loading="lazy"><span><span data-en="The preparation" data-ar="الاستعداد">The preparation</span><span class="preview-live" data-en="PHOTO" data-ar="صورة">PHOTO</span></span></a>
+                    <a class="gallery-preview-card" href="gallery.html?type=video&amp;item=lexonz-423"><video data-preview data-src="public/media/library/lexonz-423.mp4" poster="public/media/library/lexonz-423-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span><span data-en="Behind the performance" data-ar="خلف الأداء">Behind the performance</span><span class="preview-live" data-en="WATCH FILM" data-ar="شاهد الفيديو">WATCH FILM</span></span></a>
+                </div>
+            </div>
         </section>
         <section class="impact">
             <div class="impact-media"></div>
@@ -248,7 +259,7 @@
         </section>
         <section class="join" id="join">
             <div class="wrap join-grid">
-                <div class="join-visual"><img src="public/media/editorial/gb4-next-move.jpg"
+                <div class="join-visual"><img src="public/media/library/lexonz-052.jpg"
                         alt="Lexonz driver preparing to race"><span data-en="FOCUS / DISCIPLINE / AMBITION" data-ar="تركيز / انضباط / طموح">FOCUS / DISCIPLINE / AMBITION</span></div>
                 <div class="join-copy">
                     <p class="micro"><b></b><span data-en="Start a conversation" data-ar="لنتحدث عن طموحك">Start a conversation</span></p>
@@ -278,8 +289,9 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
-    <script src="locale.js?v=20261015-arabic-editorial"></script>
-    <script src="main.js?v=20261015-arabic-editorial"></script>
+    <script src="locale.js?v=20261015-library"></script>
+    <script src="main.js?v=20261015-library"></script>
+    <script src="media-motion.js?v=20261015-premium"></script>
 </body>
 
 </html>

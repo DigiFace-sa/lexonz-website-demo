@@ -28,6 +28,8 @@ document.querySelectorAll('body span,body strong').forEach(el=>{
  if(!el.children.length&&!el.hasAttribute('data-en')&&lexonzLabels[en]){el.dataset.en=en;el.dataset.ar=lexonzLabels[en]}
 });
 const lexonzAttributes = {
+ 'Lexonz team member reviewing session notes':'أحد أعضاء فريق ليكسونز يراجع ملاحظات الجولة',
+ 'Lexonz driver preparing in racing overalls':'سائق ليكسونز يستعد بزيّ السباق',
  'Close circuit story':'إغلاق قصة الحلبة','Current service pillar':'الركيزة المعروضة حالياً',
  'Services overview':'نظرة عامة على ركائز خدماتنا',
  'Lexonz team preparing a race car':'فريق ليكسونز أثناء تجهيز سيارة السباق',

@@ -1,0 +1,7 @@
+import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';
+fs.mkdirSync('.media-work',{recursive:true});const files=[];function walk(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,e.name);if(e.isDirectory())walk(p);else if(/\.(jpg|jpeg|png|mp4|mov)$/i.test(p))files.push(p)}}walk('Lexonz pics');
+const unique=new Map();let n=0;
+for(const file of files.sort((a,b)=>a.startsWith('Lexonz pics/drive-')-b.startsWith('Lexonz pics/drive-')||a.localeCompare(b))){const hash=crypto.createHash('sha256');for await(const chunk of fs.createReadStream(file))hash.update(chunk);const key=hash.digest('hex');if(!unique.has(key))unique.set(key,{file,hash:key,type:/\.(mov|mp4)$/i.test(file)?'video':'photo',bytes:fs.statSync(file).size});if(++n%100===0)console.log('Inspected',n)}
+const previous=fs.existsSync('public/media/library/SOURCES.json')?JSON.parse(fs.readFileSync('public/media/library/SOURCES.json','utf8')):[];
+const ids=new Map(previous.map(x=>[x.sha256,x.id]));let next=previous.reduce((max,x)=>Math.max(max,Number(x.id.split('-').at(-1))),0);
+const result=[...unique.values()].map(item=>({...item,id:ids.get(item.hash)||`lexonz-${String(++next).padStart(3,'0')}`}));fs.writeFileSync('.media-work/inventory.json',JSON.stringify(result,null,2));console.log('Unique',result.length,'photos',result.filter(x=>x.type==='photo').length,'videos',result.filter(x=>x.type==='video').length);

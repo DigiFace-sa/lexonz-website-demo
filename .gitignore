@@ -9,6 +9,9 @@
 public/media/wyda-*
 
 # Local and OS files
+# Original camera library; publish only the optimized public/media/library copies.
+/Lexonz pics/
+/.media-work/
 .DS_Store
 .vscode/
 .idea/

@@ -529,7 +529,7 @@ body.circuit-modal-open{overflow:hidden}
 @media(max-width:800px){.circuit-media-gallery{left:16px;right:16px;bottom:13px;gap:6px}.circuit-gallery-thumb{flex-basis:58px;width:58px;height:42px}.circuit-modal-media.has-gallery>.circuit-media-caption{left:16px;right:16px;bottom:63px;font-size:7px}}
 
 /* New GB4 photography carries the story without changing the site palette. */
-.impact-media{background-image:url('public/media/editorial/gb4-car-detail.jpg');background-position:center 48%}
+.impact-media{background-image:url('public/media/library/lexonz-341.jpg');background-position:center 48%}
 .circuit-rail:before{background-image:linear-gradient(90deg,rgba(13,13,13,.91),rgba(13,13,13,.6),rgba(13,13,13,.91)),url('public/media/editorial/gb4-grid.jpg')}
 .join-visual img{filter:saturate(.72) contrast(1.08);object-position:center 44%}
 .circuit-modal-media>img{filter:saturate(.88) contrast(1.07)}
@@ -547,6 +547,27 @@ body{width:100%;max-width:100%;overflow-x:clip}
 .circuit-card{background-size:cover;background-position:center}
 /* Keep the custom pointer above story dialogs and their blurred backdrops. */
 .cursor{z-index:1000}
+
+/* Full-height mobile navigation: compact rows, an opaque surface, native scrolling. */
+@media(max-width:800px){
+ .site-header{backdrop-filter:none;-webkit-backdrop-filter:none}
+ .site-header nav.main-nav{position:fixed;inset:0;z-index:2;display:flex;width:100%;height:100vh;height:100dvh;max-height:100dvh;min-height:0;box-sizing:border-box;padding:calc(96px + env(safe-area-inset-top,0px)) 28px calc(24px + env(safe-area-inset-bottom,0px));gap:0;justify-content:flex-start;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch;background:radial-gradient(ellipse at 80% 12%,rgba(7,245,237,.065),transparent 45%),#0d1112;clip-path:none;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .24s ease,visibility 0s .24s}
+ .site-header nav.main-nav.open{clip-path:none;opacity:1;visibility:visible;pointer-events:auto;transition:opacity .24s ease}
+ .site-header nav.main-nav:before{content:'LEXONZ / NAVIGATION';flex:0 0 auto;font-size:9px;line-height:1.6;padding-bottom:16px;margin:0 0 8px;letter-spacing:1.8px;color:#8b9a9d;border-bottom:1px solid #ffffff1c}
+ .site-header nav.main-nav:after{content:none}
+ .site-header nav.main-nav a{flex:0 0 auto;display:block;min-height:52px;margin:0;padding:16px 0;font-size:clamp(22px,5.5vw,30px);line-height:1.25;letter-spacing:.7px;white-space:normal;overflow-wrap:break-word;text-align:start;border-bottom:1px solid #ffffff14;opacity:1;transform:none;transition:color .2s,background .2s;transition-delay:0s}
+ .site-header nav.main-nav a.current,.site-header nav.main-nav a[aria-current=page]{color:var(--accent)}
+ .site-header nav.main-nav a:hover{color:var(--accent)}
+ .site-header nav.main-nav a:focus-visible{outline:1px solid var(--accent);outline-offset:4px}
+ .arabic .site-header nav.main-nav{direction:rtl}
+ .arabic .site-header nav.main-nav:before{content:'ليكسونز / القائمة';letter-spacing:0}
+ .arabic .site-header nav.main-nav a{line-height:1.4;letter-spacing:0}
+}
+@media(min-width:801px) and (max-width:1200px){
+ .main-nav,.arabic .main-nav{gap:16px;margin-inline:0}
+ .main-nav a{font-size:10px;white-space:nowrap;letter-spacing:.7px}
+ .header-actions .nav-cta{display:none}
+}
 
 /* Vector arrows never use platform emoji glyphs, including iOS Safari. */
 i[class^="ui-arrow-"]{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:0 0 18px;width:18px;height:18px;line-height:0}

@@ -28,6 +28,12 @@ document.addEventListener('DOMContentLoaded',()=>{
    {src:'public/media/editorial/donington-corner.jpg',en:'LEXONZ / THROUGH THE CORNER',ar:'ليكسونز / عبور المنعطف'}
   ]
  };
+ const additionalCircuitPhotos={
+  'Silverstone Grand Prix':['100','115','127','122','148','097'],
+  'Donington Park Grand Prix':['001','005','011','025','037','039'],
+  'Snetterton 300':['172','177','187','194','245','256']
+ };
+ Object.entries(additionalCircuitPhotos).forEach(([name,ids])=>{ids.forEach((id,index)=>circuitMedia[name].push({src:`public/media/library/lexonz-${id}.jpg`,thumb:`public/media/library/lexonz-${id}-thumb.jpg`,en:`LEXONZ / CIRCUIT MOMENT ${index+1}`,ar:`ليكسونز / مشاهد من الحلبة ${index+1}`}))});
  const circuitSlides=card=>[
   ...(circuitMedia[card.dataset.circuit]||(card.dataset.layoutImage==='true'?[]:[{src:card.dataset.image,en:'LEXONZ / ON TRACK',ar:'ليكسونز / على الحلبة'}])),
   {src:card.dataset.layoutSrc,en:'CIRCUIT LAYOUT / REFERENCE',ar:'مخطط الحلبة / للاطّلاع',layout:true}
@@ -62,7 +68,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   circuitModal.querySelector('.circuit-modal-media').classList.toggle('has-layout',photos[activeCircuitPhoto].layout===true);
   gallery.replaceChildren();
   if(photos.length){
-   photos.forEach((photo,index)=>{const button=document.createElement('button'),thumb=document.createElement('img');button.type='button';button.className='circuit-gallery-thumb';button.dataset.photoIndex=index;button.setAttribute('aria-label',lang==='ar'?`اعرض الصورة ${index+1} من ${photos.length}`:`View photo ${index+1} of ${photos.length}`);button.setAttribute('aria-pressed',index===activeCircuitPhoto?'true':'false');thumb.src=photo.src;thumb.alt='';thumb.loading='lazy';button.append(thumb);gallery.append(button)});
+   photos.forEach((photo,index)=>{const button=document.createElement('button'),thumb=document.createElement('img');button.type='button';button.className='circuit-gallery-thumb';button.dataset.photoIndex=index;button.setAttribute('aria-label',lang==='ar'?`اعرض الصورة ${index+1} من ${photos.length}`:`View photo ${index+1} of ${photos.length}`);button.setAttribute('aria-pressed',index===activeCircuitPhoto?'true':'false');thumb.src=photo.thumb||photo.src;thumb.alt='';thumb.loading='lazy';button.append(thumb);gallery.append(button)});
    image.src=photos[activeCircuitPhoto].src;
    image.alt=photos[activeCircuitPhoto].layout?(lang==='ar'?`مخطط حلبة ${arabicCircuit[0]}`:`${name} circuit layout`):(lang==='ar'?`صورة من حلبة ${arabicCircuit[0]}`:`Photograph from ${name}`);
    caption.textContent=photos[activeCircuitPhoto][lang];
